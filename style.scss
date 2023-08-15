@@ -1,0 +1,394 @@
+/**
+
+Style SCSS du site pierrealainfaure.com
+Theme Name: Mota Photo Child
+Template: motaphoto
+Author: Pierre Alain FAURE
+
+*/
+
+@import "./assets/css/imgInfos";
+
+/* @import "./assets/css/normalize";*/
+
+@import "./assets/css/reset";
+/* @import "./assets/css/normalize";*/
+
+@import "./assets/css/menu";
+/* @import "./assets/css/cursor"; */
+@import "./assets/css/fonts";
+
+
+$image-home-url: "<?php echo $thumbnail; ?>";
+
+
+//@import "./assets/css/animations";
+@import "./assets/icons/fontawesome/css/all.min.css";
+
+:root {
+  --home-color: #20CAFC;
+  --whoiam-color: #ffffff;
+  --contact-color: #000000;
+  --primary-color: #E00000;
+	--secondary-color: #CD006B;
+	--third-color: #EEE325;
+}
+button{
+  font-size: 1.1rem;
+  border: none;
+  border-color: unset;
+  border-radius: 3px;
+  background: #e6e6e6;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1;
+  padding: 0.6em 4em 0.4em;
+  cursor: pointer;
+  font-family: "SpaceMono-Regular";
+}
+body {
+/*   cursor: none; */ /* Cacher le pointeur de souris par défaut */
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.image-home-background {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//Title above image-home-background in header 
+.title-header {
+  font-size: 8vw;
+  text-transform: uppercase;
+  color: white;
+  color: transparent;
+  font-family: "SpaceMono-BoldItalic";
+  -webkit-text-stroke: 2px #ffffff;
+  
+}
+
+/* Cursor : Style du rond avec opacité de 0.5 */
+/* .custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px; 
+  height: 30px; 
+  background-color: rgba(255, 0, 0, 0.5); 
+  border-radius: 50%;
+  pointer-events: none; 
+  z-index: 9999; 
+} */
+
+
+/* Animation pour faire bouger le rond avec la souris */
+@keyframes moveCursor {
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/*POrtfolio*/
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0rem 7rem;
+/*   text-align: center; Désactivé lorsque utilisé pour la page-infos
+  background-color: #fff;*/
+/*   border-radius: 0.5em; */
+}
+.gallery {
+  display: grid;
+  margin: 3em 0;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 1em;
+  grid-auto-flow: dense;
+}
+
+figure {
+  position: relative;
+  display: flex;
+  align-items: self-end;
+
+  img {
+    flex: 1;
+    max-width: 100%;
+    object-fit: cover;
+    height: 400px;
+  }
+}
+/* Effet de rollover */
+figure:hover .rolloverImg {
+  opacity: 0.8;
+}
+/* Styles pour le Rollover */
+.rolloverImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0; 
+  transition: opacity 0.4s ease-in-out;
+  font-size: 19px;
+  font-family: "SpaceMono-Regular";
+  color: #fff;
+}
+
+/* Styles pour l'icône d'oeil dans le lightbox */
+
+.rolloverImg button{
+border: none;
+cursor: pointer;
+}
+
+.rolloverImg-eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+  background: url(./assets/icon/icon-eye.svg) center center / 100% 100%;
+
+}
+.rolloverImg-fullscreen {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  background: url(./assets/icon/icon-fullscreen.svg) center center / 100% 100%;
+
+}
+.rolloverImg-reference{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 50%;
+  height: auto;
+  padding: 0 15px;
+  &::first-letter{
+    text-transform: uppercase;
+  }
+}
+.rolloverImg-category{
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 15px;
+
+  &::first-letter{
+    text-transform: uppercase;
+  }
+}
+
+/*Lightbox*******************************************/
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  overflow: hidden;
+  visibility: hidden;
+
+  img {
+    max-width: 100%;
+    height: 80vh;
+    width: auto;
+    animation: animImgPortfolio 0.5s;
+    position: relative;
+  }
+
+  &.show {
+    visibility: visible;
+  }
+}
+
+
+@keyframes animImgPortfolio {
+  /* Définissez votre animation ici */
+}
+
+
+.lightbox__container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+/*   margin-left: 50px;
+  margin-right: 50px; */
+  animation: animImgPortfolio .5s;
+}
+
+.lightbox-infos{
+
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour les informations */
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  bottom: 0; /* Position verticale au milieu */
+  left: 0; /* Position horizontale au milieu */
+  display: flex;
+  justify-content: space-around;
+  font-size: 13px;
+  font-family: "SpaceMono-Regular";
+  color: #fff;
+
+}
+
+.lightbox__close{
+  border: none;
+  background: url('data:image/svg+xml;utf8,<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.17 14.83L14.83 9.17M14.83 14.83L9.17 9.17M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center / 48px 48px no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 90px;
+  margin-top: 30px;
+  z-index: 12;
+  opacity: .5;
+  cursor: pointer;
+  transition: .3s;
+  text-indent: -3000px;
+
+
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.lightbox__next, .lightbox__prev{
+
+  background: url(./assets/icon/arrowright.svg) 100px center / 48px 48px no-repeat;
+  width: 150px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: -14px;
+  z-index: 11;
+  opacity: .5;
+  margin-right: 30px;
+  font-size: 12px;
+  font-family: "SpaceMono-Regular";
+  color: #fff;
+}
+.lightbox__prev{
+  left: 0;
+  right: auto;
+  background: url(./assets/icon/arrowleft.svg) -5px center / 48px 48px no-repeat;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.lightbox button{
+  opacity: .5;
+  transition: opacity .3s;
+  border: none;
+  cursor: pointer;
+/*   text-indent: -3000px; */
+
+  &:hover{
+    opacity: 1;
+  }
+}
+
+@keyframes animImgPortfolio{
+  from{
+    opacity: .5;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+/*Bouton loadMore*/
+.containerLoadMore{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;  
+
+}
+.loadmoreClass{
+  width: 300px;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+/*End of lightbox*/
+
+/* Start of Select Filters : filtering by category and tags*/
+.filters{
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 3rem 7rem;
+  height: 80px;
+
+  select{
+    margin-right: 15px;
+    padding: 1.1rem 3.2rem;
+    font-size: 15px;
+    font-family: "SpaceMono-Regular";
+    border-radius: 8px;
+
+  }
+}
+
+
+.site-footer {
+
+  height: 35px;
+  background-color: white;
+  padding: 1rem;
+  border-top: 1px solid black;
+  margin-top: 50px;
+
+  ul.menu-footer {
+    display: flex;
+    list-style: none;
+    text-transform: uppercase;
+    color: black;
+    font-family: "SpaceMono-Regular";
+    justify-content: center;
+
+    li {
+      margin-right: 3rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 22px;
+        color: #333;
+        padding: 5px 10px;
+
+        &:hover {
+          color: #f00;
+        }
+      }
+    }
+  }
+}
+
+@import "./assets/css/responsive";

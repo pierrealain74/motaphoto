@@ -1,0 +1,14 @@
+<div class="rl-gallery-container rl-loading" id="rl-gallery-container-1" data-gallery_id="19">
+    <div class="rl-gallery rl-basicgrid-gallery " id="rl-gallery-1" data-gallery_no="1">
+        <div class="rl-gallery-item">
+            <a href="http://default-underscore-theme.local/wp-content/uploads/2023/08/img8.jpg" title="" data-rl_title="" class="rl-gallery-link" data-rl_caption="" data-rel="lightbox-gallery-1"><img src="http://default-underscore-theme.local/wp-content/uploads/2023/08/img8-300x169.jpg" width="300" height="169" alt=""/>
+            </a>
+        </div>
+        <div class="rl-gallery-item">
+            <a href="http://default-underscore-theme.local/wp-content/uploads/2023/08/img5.jpg" title="" data-rl_title="" class="rl-gallery-link" data-rl_caption="" data-rel="lightbox-gallery-1"><img src="http://default-underscore-theme.local/wp-content/uploads/2023/08/img5-300x188.jpg" width="300" height="188" alt=""/></a></div>
+        <div class="rl-gallery-item">
+            <a href="http://default-underscore-theme.local/wp-content/uploads/2023/08/img7.jpg" title="" data-rl_title="" class="rl-gallery-link" data-rl_caption="" data-rel="lightbox-gallery-1"><img src="http://default-underscore-theme.local/wp-content/uploads/2023/08/img7-300x200.jpg" width="300" height="200" alt=""/></a></div>
+        <div class="rl-gallery-item">
+            <a href="http://default-underscore-theme.local/wp-content/uploads/2023/08/img4.jpg" title="" data-rl_title="" class="rl-gallery-link" data-rl_caption="" data-rel="lightbox-gallery-1"><img src="http://default-underscore-theme.local/wp-content/uploads/2023/08/img4-300x169.jpg" width="300" height="169" alt=""/></a></div>
+    </div> </div>
+	</div><!-- .entry-content -->

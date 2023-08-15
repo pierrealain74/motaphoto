@@ -1,0 +1,49 @@
+<?php
+//Création gallery photo à partir du fichier JSON des portfolio
+//Ouvre le fichier JSON 
+/* $json_data = file_get_contents(get_stylesheet_directory() . '/assets/json/portfolio-data.json');
+$data = json_decode($json_data, true); */
+
+$data = $args['data'];//recupere le tableau data qui est créé dans home.php
+$firstFourItems = array_slice($data, 0, 4);
+
+echo '<div class="container"><section class="gallery">';
+
+$keyImg = 0;
+//Lis le tableau JSON des images portfolio
+foreach($firstFourItems as $item){
+
+    echo '<figure><div class="rolloverImg">';
+
+   
+    //Afficher texte Category
+    echo '<span class="rolloverImg-category">';
+    foreach ($item['category'] as $category) {
+        echo $category['name'];
+    }
+
+    echo '</span>';
+
+    ////Afficher texte Reference
+    echo '<span class="rolloverImg-reference">';
+    foreach ($item['tags'] as $tags) {
+        echo $tags['name'];
+    }
+
+    echo '</span>';
+
+    //ROLLOVER sur image : ICON fullscreen + eye 
+    echo '<button class="rolloverImg-fullscreen"></button><a href="infos-photo/?id='.$item['id_post'].'&cat='. $category['name'] .'&index='.$keyImg.'" class="rolloverImg-eye"></a></div>';
+
+    /* IMAGE DE LA GALLERY **************************/
+    //Afficher Images portfolio
+    echo '<img src="' . $item['thumbnail'] . '" class="img-gallery" alt="' . $item['post_title'] . '" id="'.$item['id_post'].'" data-index="'.$keyImg.'" /></figure>';
+
+    $keyImg++;
+
+}
+
+echo '</section></div>';
+
+?>
+

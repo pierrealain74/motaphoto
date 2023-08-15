@@ -1,0 +1,188 @@
+/* Change classical menu to Burger menu */
+@media screen and (max-width: 320px) {
+
+  .titleimgInfos{
+
+    font-size: 6vw;
+
+
+  }
+  .taxonomyimgInfos{
+    line-height: 12px;
+  }
+
+  .modal-content {
+
+    width: 84%;
+  }
+  .wpcf7-form label {
+
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    p.site-title a {
+        font-size: calc(22px + 1vw);
+        letter-spacing: 1px;
+    }
+    .site-header {
+        align-items: center;
+    }
+
+    .gallery {
+
+      grid-template-columns: unset;
+
+    }
+ /*    .item{
+      grid-column: unset;
+
+    } */
+    img {
+
+      height: 300px;
+  }
+  .site-footer ul.menu-footer li {
+    margin-right: 0rem;
+  }
+
+  /*Page infos-img.php avec minislider etc.. *********/
+  .container, .containerimgInfos {
+    padding: 1rem 2rem;
+  }
+
+  .imgInfos {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  figure .imgSrc{
+    order: 1;
+  }
+  .txt{
+    order: 2;
+    align-items: left;
+  }
+  .titleimgInfos {
+
+    font-size: 11vw;
+  }
+  .taxonomyimgInfos{
+    font-size: 4.3vw !important;
+  }
+
+  .contactImgInfos {
+    order: 3;
+  }
+  .minislider {
+    display: none;
+  }
+  .like {
+    order: 4;
+  }
+
+
+}
+
+
+/* Change classical menu to Burger menu */
+@media screen and (max-width: 800px) {
+
+  .modal-content {
+
+    width: 84%;
+  }
+
+
+/*Page infos-img.php avec minislider etc.. *********/
+.containerimgInfos {
+  padding: 1rem 2rem;
+}
+.contactImgInfos p{
+  font-size: .8rem;
+}
+.taxonomyimgInfos{
+
+  font-size: 2.3vw;
+  line-height: 35px;
+
+}
+
+
+
+}
+
+
+@media screen and (max-width: 1200px) {
+    .menu-horizontal {
+      display: none; /* Cacher le menu horizontal sur les petits écrans */
+    }
+  
+    #menuToggle {
+      display: block; /* Afficher le menu burger sur les petits écrans */
+    }
+  
+    .menu-fullscreen {
+        display: none;
+        position: fixed;
+        top: -100%;
+        /*  max-width: 1440px; */
+        width: 100%;
+        height: 100vh;
+        background: var(--primary-color);
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: -1;
+        transform-origin: top;
+        transition: top 0.7s ease-in-out;
+        overflow: hidden;
+      
+        &.active {
+          top: 2rem;
+          left: 0;
+          display: flex;
+        }
+    
+      
+        ul {
+          list-style: none;
+          text-align: center;
+          margin: 0;
+          margin-top: 120px;
+      
+          li {
+            a {
+   
+              text-decoration: none;
+              font-size: 3rem;
+      
+              &:hover {
+                text-shadow: 0px 0px 14px #ff5c00;
+              }
+            }
+          }
+      
+          p {
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 10%;
+          }
+        }
+      }
+
+      .lightbox__close{
+
+        margin-top: 100px;
+      }
+
+/*       .filters{
+        display: flex;
+        flex-direction: column;
+
+      } */
+}
