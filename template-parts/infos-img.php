@@ -20,6 +20,13 @@ get_header();
 
 
 ?>
+
+<script>
+// Variable themeDirectoryUri accessible en JavaScript
+var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
+</script>
+
+
 <main id="primary" class="site-main">
 	<script>
 	// Définissez la variable themeDirectoryUri pour qu'elle soit accessible en JavaScript
@@ -145,6 +152,7 @@ if($thumbnailsFiltered == null){
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/minislide.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox-infos.js' ?>"></script>
+
 </main><!-- #main -->
 <?php
 /* get_sidebar(); */

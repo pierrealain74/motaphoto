@@ -52,11 +52,28 @@ foreach($firstFourItems as $item){
 }
 
 echo '</section></div><section class="containerLoadMore"><button class="contactImgInfos loadmoreClass" id="btloadMore">Charger +</button></section>';
-
 ?>
-<!--********************* BOUTON LOAD MORE *************************************-->
+
+<!--********************* TEMPLATE LIGHTBOX ********************* -->
+<div class="lightbox">    
+    <button class="lightbox__next">Suivant</button>
+    <button class="lightbox__prev">Précédent</button>
+    <div class="lightbox__container">
+       <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/header.png'?>" alt="" id="imgLightboxContainer">
+       <div class="lightbox-infos"><span class="lightbox-category">category</span><span class="lightbox-reference">reference</span></div>
+       <button class="lightbox__close">Fermer</button>        
+    </div>
+</div>
+
+<!--********************* JS LOGIQUE *************************************-->
 <script>
-    var item = <?php echo json_encode($data); ?>// charger le json pour javascript
+    var item = <?php echo json_encode($data); ?>// charger le json pour les javascript
 </script>
+
+
+
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/loadMore.js' ?>"></script>
+
+
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox.js' ?>"></script>
 

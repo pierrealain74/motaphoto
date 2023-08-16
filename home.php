@@ -36,14 +36,9 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	//Template portfolio
 	get_template_part('template-parts/portfolio', null, array('data' => $data));
 	
-	//LightBox
-	get_template_part('template-parts/lightbox');
-
 ?>
-	<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
-	<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox.js' ?>"></script>
 
-</main><!-- #main -->
+</main>
 
 <?php
 /* get_sidebar(); */

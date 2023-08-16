@@ -139,14 +139,18 @@ function save_portfolio_update_json() {
 add_action('wp_loaded', 'save_portfolio_update_json');
 
 //Js avec evenlistener sur le select categorie
-function ajax_request() {
-    
-    // Define the URL for your AJAX endpoint
-    $ajax_url = admin_url('admin-ajax.php');
+function ajax_request()
+{
 
-    wp_enqueue_script( 'ajaxrequest', get_stylesheet_directory_uri() . '/assets/js/inputselect.js' );
-    wp_localize_script('ajaxrequest', 'ajax_object', array('ajax_url' => $ajax_url));
+    if (is_home()) {
 
+        // Define the URL for your AJAX endpoint
+        $ajax_url = admin_url('admin-ajax.php');
+
+        wp_enqueue_script('ajaxrequest', get_stylesheet_directory_uri() . '/assets/js/inputselect.js');
+        wp_localize_script('ajaxrequest', 'ajax_object', array('ajax_url' => $ajax_url));
+
+    }
 }
 add_action('wp_enqueue_scripts', 'ajax_request');
 

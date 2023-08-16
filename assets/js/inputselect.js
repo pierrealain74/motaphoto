@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
       fetch(url)
           .then(response => response.json())
           .then(data => {
-            gallery.innerHTML = ""; // Efface le contenu existant
+            gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php
 
             data.forEach(item => {
                 

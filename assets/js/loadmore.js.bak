@@ -1,4 +1,4 @@
-function createFigureHTML(item, i) {
+function createFigureHTML(item) {
     return `
     <div class="rolloverImg">
             <span class="rolloverImg-category">${item.category[0].name}</span>
@@ -6,7 +6,7 @@ function createFigureHTML(item, i) {
             <button class="rolloverImg-fullscreen"></button>
             <a href="infos-photo/?id=${item.id_post}&cat=${item.category[0].name}&index=0" class="rolloverImg-eye"></a>
         </div>
-        <img src="${item.thumbnail}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="${i}">`;
+        <img src="${item.thumbnail}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="0">`;
 }
 
 // loadMore.js
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
                 //Utiliser fonction de creation de template
                 //la fonction createFigureHTML est dans /js/portfolio.js
-                figure.innerHTML = createFigureHTML(item[i], i);
+                figure.innerHTML = createFigureHTML(item[i]);
 
                 gallery.appendChild(figure);
                     
@@ -49,11 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
             loadMoreButton.style.display = "none"; // Cacher le bouton fin de array
 
         }
-
-        attachLightboxEvents();
-
-
-
     });
 });
 
