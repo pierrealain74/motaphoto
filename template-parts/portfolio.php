@@ -2,7 +2,19 @@
 
 //Recupere un array JSON des portfolios : toutes les photos (defaut), OU que les catégories selectionnées, OU que les tags...
 
-$data = $args['data'];//recupere le tableau data qui est créé dans home.php
+//$data = $args['data'];//recupere le tableau data qui est créé dans home.php
+
+/* 
+
+$data_json = isset($_POST['data']) ? $_POST['data'] : '';
+/* $data = json_decode(stripslashes($data_json), true); */
+/* 
+$data = json_decode($data_json, true); */
+
+
+
+$data = $args['data'];
+/* var_dump('var dump de data dans portfolio : ', $data); */
 $firstFourItems = array_slice($data, 0, 4);// Decoupe en 4 1ers item pour Load More
 
 

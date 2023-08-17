@@ -4,7 +4,13 @@
 echo '<div class="filters">'; // Container des Select
 
 
-/** SELECT CATEGORIE **********************************************/
+
+
+
+
+
+
+/************************ SELECT CATEGORIE **********************************************/
 
 echo '<select id="categorySelect">';
 echo '<option value="" selected>CATEGORIES</option>';
@@ -41,10 +47,18 @@ for ($i = 0; $i <= count($arrayUniqueCategory)-1; $i++){
 }
 
 echo '</select>';
+
+
+
+
+
+
+
+
 /* var_dump($arrayAllCategory);
 var_dump($arrayUniqueCategory); */
 
-/** SELECT TAGS (FORMAT) ********************************************/
+/**************************** SELECT TAGS (FORMAT) ********************************************/
 
 echo '<select>';
 echo '<option value="" selected>FORMATS</option>';
@@ -52,7 +66,7 @@ echo '<option value="portraits">Portrait</option>';
 echo '<option value="paysage">Paysage</option>';
 echo '</select>';
 
-/** SELECT RECENT SORT ********************************************/
+/****************************** SELECT RECENT SORT ********************************************/
 
 echo '<select style="float: right; margin-right:0">';
 echo '<option value="" selected>TRIER PAR</option>';

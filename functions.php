@@ -142,7 +142,7 @@ add_action('wp_loaded', 'save_portfolio_update_json');
 function ajax_request()
 {
 
-    if (is_home()) {
+    /* if (is_home()) { */
 
         // Define the URL for your AJAX endpoint
         $ajax_url = admin_url('admin-ajax.php');
@@ -150,9 +150,10 @@ function ajax_request()
         wp_enqueue_script('ajaxrequest', get_stylesheet_directory_uri() . '/assets/js/inputselect.js');
         wp_localize_script('ajaxrequest', 'ajax_object', array('ajax_url' => $ajax_url));
 
-    }
+   /*  } */
 }
 add_action('wp_enqueue_scripts', 'ajax_request');
+
 
 
 /***************** Traiter requete AJAX
@@ -221,14 +222,14 @@ function get_portfolio_items() {
             'reference' =>  $reference_values,//taxonomie Reference = bf2395,..
         );
         $data[] = $post_data; 
-        $firstFourItems = array_slice($data, 0, 4);
+        //$firstFourItems = array_slice($data, 0, 4);
     
         //wp_reset_postdata();
         $counter++;
     }
     
     // Retournez les données au format JSON
-    wp_send_json($firstFourItems);
+    wp_send_json($data);
 }
 
 

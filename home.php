@@ -37,6 +37,9 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	get_template_part('template-parts/portfolio', null, array('data' => $data));
 	
 ?>
+<!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/test.js' ?>"></script> -->
+<!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
+<script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/lightbox.js' ?>"></script> -->
 
 </main>
 
