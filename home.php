@@ -28,18 +28,28 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	//START : Get All portfolio Datas via JSON file
 	$json_data = file_get_contents(get_stylesheet_directory() . '/assets/json/portfolio-data.json');
 	$data = json_decode($json_data, true);
-	
+
+?>
+
+<script>
+    var item = <?php echo json_encode($data); ?>// charger le json pour les javascript
+</script>
+
+
+<?php	
 	
 	//Liste deroulantes : selection d'une catégorie ou tags
 	get_template_part('template-parts/filters', null, array('data' => $data));	
 
 	//Template portfolio
-	get_template_part('template-parts/portfolio', null, array('data' => $data));
+/* 	get_template_part('template-parts/portfolio', null, array('data' => $data)); */
 	
 ?>
-<!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/test.js' ?>"></script> -->
-<!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
-<script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/lightbox.js' ?>"></script> -->
+
+
+
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/loadmore.js' ?>"></script>
 
 </main>
 

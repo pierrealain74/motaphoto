@@ -1,9 +1,12 @@
 
-
-
-    /* LightBOX JS */
-
-
+/**
+ * 
+ * 
+ * LightBOX JS 
+ *
+ * 
+ *  
+ */ 
     const imgGallery = document.querySelectorAll('.img-gallery')
     const btClose = document.querySelectorAll('.lightbox__close');
     const lightboxContainer = document.querySelector('.lightbox-container');

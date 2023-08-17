@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
           .then(data => {
             
 
-                //gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
+                gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
 
-                //const firstFourItems = data.slice(0, 4);
+                const firstFourItems = data.slice(0, 4);
 
-                /* firstFourItems.forEach((item, index) => {
+                firstFourItems.forEach((item, index) => {
 
                                 const figure = document.createElement('figure');
                                 //console.log(figure)
@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 // Ajoutez la figure à la galerie
                                 gallery.appendChild(figure);
 
-                }); */
+                });
 
-                loadmore(data);
+                loadMore(data);
                 /* var dataSelect = data;           */
                 /* localStorage.setItem('data', JSON.stringify(data)); */
 

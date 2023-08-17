@@ -1,86 +1,67 @@
-// loadMore.js
+/* 
+document.addEventListener("DOMContentLoaded", function () {
 
-
-function loadmore(data) {
-    
-
-/*     document.addEventListener("DOMContentLoaded", function () { */
-
-        /*  var item = JSON.parse(localStorage.getItem('data')); */
+    /*  var item = JSON.parse(localStorage.getItem('data')); */
          
-         /* if (typeof dataSelect !== 'undefined' && dataSelect !== null && Object.keys(dataSelect).length > 0) {
-             console.log(' variable json dataSelect ok : ', dataSelect)
-         } else {
-             console.log(' variable json dataSelect VIDE : ', dataSelect)
-         }
-          */
-        //var item = data;
+    /* if (typeof dataSelect !== 'undefined' && dataSelect !== null && Object.keys(dataSelect).length > 0) {
+        console.log(' variable json dataSelect ok : ', dataSelect)
+    } else {
+        console.log(' variable json dataSelect VIDE : ', dataSelect)
+    }
+     */
+    //var data = item;
+    //Afficher les 4 premiers images////////////////////////////////
 
-        console.log('startIndex : ', startIndex)
-        console.log('data : ', data)
-        var startIndex = 4;
-        var itemsPerPage = 4;
-        var gallery = document.querySelector(".gallery");
-        var loadMoreButton = document.getElementById("btloadMore");
-
-        //Afficher les 4 premiers images////////////////////////////////
-
-        gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
+    //gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
             
-        const firstFourItems = data.slice(0, 4);
+      //const firstFourItems = data.slice(0, 4);
+    
+/*} */
+function loadMore(data) {
 
-        firstFourItems.forEach((unitItem, index) => {
+    //console.log('startIndex : ', startIndex)
+    //console.log('data : ', data)
+    var startIndex = 4;
+    var itemsPerPage = 4;
+    var gallery = document.querySelector(".gallery");
+    var loadMoreButton = document.getElementById("btloadMore");
 
-                const figure = document.createElement('figure');
-                //console.log(figure)
-
-                // Utilisez la fonction de création de modèle pour générer le contenu de la figure
-                figure.innerHTML = createFigureHTML(unitItem, index);
-
-                //console.log(figure.innerHTML)
-
-                // Ajoutez la figure à la galerie
-                gallery.appendChild(figure);
-        });
+            loadMoreButton.addEventListener("click", function () {
 
 
-    loadMoreButton.addEventListener("click", function () {
+                            for (var i = startIndex; i < startIndex + itemsPerPage; i++) {// i=4, i < 4 + 4, i+1
 
+                                var itemLength = data.length; // Obtenir la longueur du tableau
 
-        for (var i = startIndex; i < startIndex + itemsPerPage; i++) {// i=4, i < 4 + 4, i+1
+                                if (i < itemLength) {
 
-            var itemLength = data.length; // Obtenir la longueur du tableau
+                                    //console.log(item[i])
+                                    const figure = document.createElement('figure');
+                                
+                                    figure.innerHTML = createFigureHTML(data[i], i);// la fonction template juste en bas
 
-            if (i < itemLength) {
+                                    gallery.appendChild(figure);
+                                        
+                                }
+                            }
 
-                //console.log(item[i])
-                const figure = document.createElement('figure');
-            
-                figure.innerHTML = createFigureHTML(data[i], i);// la fonction template juste en bas
+                            startIndex += itemsPerPage;
 
-                gallery.appendChild(figure);
-                    
-            }
-        }
+                            //End of array : hide button Load More
+                            if(startIndex >= itemLength){
 
-        startIndex += itemsPerPage;
+                                loadMoreButton.style.display = "none"; // Cacher le bouton fin de array
+                                startIndex = 0;
 
-        //End of array : hide button Load More
-        if(startIndex >= itemLength){
+                            }
 
-            loadMoreButton.style.display = "none"; // Cacher le bouton fin de array
-            startIndex = 0;
+                            //attachLightboxEvents();
 
-        }
+            });
 
-        attachLightboxEvents();
+}//Endof function loadMore(data)
 
-
-
-    });
-
-}
-function createFigureHTML(item, i) {
+/* function createFigureHTML(item, i) {
     return `
     <div class="rolloverImg">
             <span class="rolloverImg-category">${item.category[0].name}</span>
@@ -90,4 +71,4 @@ function createFigureHTML(item, i) {
     </div>
     <img src="${item.thumbnail}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="${i}">`;
 }
-
+ */
