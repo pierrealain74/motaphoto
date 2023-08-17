@@ -17,30 +17,35 @@ document.addEventListener("DOMContentLoaded", function () {
     var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + selectedCategory;
     //var url = ajax_object.ajax_url.replace('/wp-admin/admin-ajax.php', '/portfolio.php')
 
-    console.log(url)
+    //console.log(url)
 
     fetch(url)//lis le array json dans l'url : http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=Mariage
           .then(response => response.json())
           .then(data => {
             
-           
-            gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php            */
-            const firstFourItems = data.slice(0, 4);
 
-            firstFourItems.forEach((item, index) => {
+                //gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
 
-                    const figure = document.createElement('figure');
-                    //console.log(figure)
+                //const firstFourItems = data.slice(0, 4);
 
-                    // Utilisez la fonction de création de modèle pour générer le contenu de la figure
-                    figure.innerHTML = createFigureHTML(item, index);
+                /* firstFourItems.forEach((item, index) => {
 
-                    //console.log(figure.innerHTML)
+                                const figure = document.createElement('figure');
+                                //console.log(figure)
 
-                    // Ajoutez la figure à la galerie
-                    gallery.appendChild(figure);
-          });
+                                // Utilisez la fonction de création de modèle pour générer le contenu de la figure
+                                figure.innerHTML = createFigureHTML(item, index);
 
+                                //console.log(figure.innerHTML)
+
+                                // Ajoutez la figure à la galerie
+                                gallery.appendChild(figure);
+
+                }); */
+
+                loadmore(data);
+                /* var dataSelect = data;           */
+                /* localStorage.setItem('data', JSON.stringify(data)); */
 
           })
           .catch(error => {

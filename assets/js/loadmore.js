@@ -1,29 +1,62 @@
 // loadMore.js
-document.addEventListener("DOMContentLoaded", function() {
-
-    var startIndex = 4;
-    var itemsPerPage = 4;
-    var gallery = document.querySelector(".gallery");
-    var loadMoreButton = document.getElementById("btloadMore");
 
 
+function loadmore(data) {
+    
+
+/*     document.addEventListener("DOMContentLoaded", function () { */
+
+        /*  var item = JSON.parse(localStorage.getItem('data')); */
+         
+         /* if (typeof dataSelect !== 'undefined' && dataSelect !== null && Object.keys(dataSelect).length > 0) {
+             console.log(' variable json dataSelect ok : ', dataSelect)
+         } else {
+             console.log(' variable json dataSelect VIDE : ', dataSelect)
+         }
+          */
+        //var item = data;
+
+        console.log('startIndex : ', startIndex)
+        console.log('data : ', data)
+        var startIndex = 4;
+        var itemsPerPage = 4;
+        var gallery = document.querySelector(".gallery");
+        var loadMoreButton = document.getElementById("btloadMore");
+
+        //Afficher les 4 premiers images////////////////////////////////
+
+        gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
+            
+        const firstFourItems = data.slice(0, 4);
+
+        firstFourItems.forEach((unitItem, index) => {
+
+                const figure = document.createElement('figure');
+                //console.log(figure)
+
+                // Utilisez la fonction de création de modèle pour générer le contenu de la figure
+                figure.innerHTML = createFigureHTML(unitItem, index);
+
+                //console.log(figure.innerHTML)
+
+                // Ajoutez la figure à la galerie
+                gallery.appendChild(figure);
+        });
 
 
-    loadMoreButton.addEventListener("click", function() {
+    loadMoreButton.addEventListener("click", function () {
 
 
-        for (var i = startIndex; i < startIndex + itemsPerPage; i++) {
+        for (var i = startIndex; i < startIndex + itemsPerPage; i++) {// i=4, i < 4 + 4, i+1
 
-            var itemLength = item.length; // Obtenir la longueur du tableau
+            var itemLength = data.length; // Obtenir la longueur du tableau
 
             if (i < itemLength) {
 
                 //console.log(item[i])
                 const figure = document.createElement('figure');
             
-                //Utiliser fonction de creation de template
-                //la fonction createFigureHTML est dans /js/portfolio.js
-                figure.innerHTML = createFigureHTML(item[i], i);
+                figure.innerHTML = createFigureHTML(data[i], i);// la fonction template juste en bas
 
                 gallery.appendChild(figure);
                     
@@ -36,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if(startIndex >= itemLength){
 
             loadMoreButton.style.display = "none"; // Cacher le bouton fin de array
+            startIndex = 0;
 
         }
 
@@ -44,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     });
-});
 
+}
 function createFigureHTML(item, i) {
     return `
     <div class="rolloverImg">
