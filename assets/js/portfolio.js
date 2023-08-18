@@ -48,38 +48,56 @@ fetch(json_File)
 
 
 function portfolio(data) {
+
+
     
-    //console.log('dans la function portfolio : ', data);
 
-
-
+    console.log('dans la function portfolio : ', data);
     const main = document.querySelector('main');
-    console.log(main)
+    //console.log(main)
+
     // Création du contenu HTML
-    var startContainerGallery = '<div class="container"><section class="gallery"></section></div><section class="containerLoadMore"><button class="contactImgInfos loadmoreClass" id="btloadMore">Charger +</button></section>';
+    var startContainerGallery = '<div class="container"><section class="gallery"></section></div>';
+
+
+
     main.insertAdjacentHTML('beforeend', startContainerGallery);   
+    
+    
+    //const container = document.querySelector('.container');
     const sectionGallery = document.querySelector('.gallery');
 
 
+    
+
+    //console.log('sectiongallery dans portfolio.js : ', sectionGallery)
 
 
     const firstFourItems = data.slice(0, 4);
 
+    sectionGallery.innerHTML = "";
+
     firstFourItems.forEach((item, index) => {
 
                     const figure = document.createElement('figure');
-                    //console.log(figure)
+                    //console.log('dans portfolio.js - figure', figure)
 
                     // Utilisez la fonction de création de modèle pour générer le contenu de la figure
                     figure.innerHTML = createFigureHTML(item, index);
-
-                    //console.log(figure.innerHTML)
+                    //console.log('dans portfolio.js - figure html : ', figure.innerHTML)
 
                     // Ajoutez la figure à la galerie
                     sectionGallery.appendChild(figure);
+                    //sectionGallery.insertAdjacentHTML('beforeend', figure);   
                    
 
     });
+    
+    var loadMoreSection = '<section class="containerLoadMore"><button class="contactImgInfos loadmoreClass" id="btloadMore">Charger +</button></section>';
+    sectionGallery.insertAdjacentHTML('afterend', loadMoreSection);
+
+
+
 
     loadMore(data);//Faire fonctionner le bouton LoadMore
 

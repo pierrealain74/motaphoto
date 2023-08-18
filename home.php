@@ -35,7 +35,6 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
     var item = <?php echo json_encode($data); ?>// charger le json pour les javascript
 </script>
 
-
 <?php	
 	
 	//Liste deroulantes : selection d'une catégorie ou tags

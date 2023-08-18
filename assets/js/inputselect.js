@@ -1,5 +1,5 @@
 /**
- * Logic AJAX
+ * Logic AJAX INPUT SELECT
  * 
  * 
  */
@@ -7,52 +7,43 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
   var categorySelect = document.getElementById("categorySelect");
-  var gallery = document.querySelector(".gallery");
+  //console.log('categorySelect dans input select : ', categorySelect)
 
+  //const sectionGallery = document.querySelector('.gallery');  
+  //console.log('sectionGallery dans input select : ', sectionGallery)
+  
 
+        categorySelect.addEventListener("change", function() {
+                    
+                var selectedCategory = categorySelect.value;
+                var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + selectedCategory;
+                //var url = ajax_object.ajax_url.replace('/wp-admin/admin-ajax.php', '/portfolio.php')
 
-  categorySelect.addEventListener("change", function() {
-   
-    var selectedCategory = categorySelect.value;
-    var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + selectedCategory;
-    //var url = ajax_object.ajax_url.replace('/wp-admin/admin-ajax.php', '/portfolio.php')
+                //console.log(url)
 
-    //console.log(url)
+                fetch(url)//lis le array json dans l'url : http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=Mariage
+                      .then(response => response.json())
+                      .then(data => {
+                        
 
-    fetch(url)//lis le array json dans l'url : http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=Mariage
-          .then(response => response.json())
-          .then(data => {
-            
+                        var container = document.querySelector(".container");
+                        //console.log('gallery dans input select : ', gallery)
+                        container.innerHTML = ""; // Efface le contenu existant
+                        
+                        //console.log('json categories dans input select : ', data)
 
-                gallery.innerHTML = ""; // Efface le contenu existant du portoflio en php*/
+                        portfolio(data);
 
-                const firstFourItems = data.slice(0, 4);
+                            
+                            
+                        /* localStorage.setItem('data', JSON.stringify(data)); */
 
-                firstFourItems.forEach((item, index) => {
-
-                                const figure = document.createElement('figure');
-                                //console.log(figure)
-
-                                // Utilisez la fonction de création de modèle pour générer le contenu de la figure
-                                figure.innerHTML = createFigureHTML(item, index);
-
-                                //console.log(figure.innerHTML)
-
-                                // Ajoutez la figure à la galerie
-                                gallery.appendChild(figure);
-
-                });
-
-                loadMore(data);
-                /* var dataSelect = data;           */
-                /* localStorage.setItem('data', JSON.stringify(data)); */
-
-          })
-          .catch(error => {
-              console.error("Une erreur s'est produite lors de la requête AJAX :", error);
-          });
-    
-  }); 
+                      })
+                      .catch(error => {
+                          console.error("Une erreur s'est produite lors de la requête AJAX :", error);
+                      });
+          
+        }); 
 });
 
 
