@@ -68,7 +68,7 @@ echo '</select>';
 echo '<select id="sortSelect" style="float: right; margin-right:0">';
 echo '<option value="" selected>TRIER PAR</option>';
 echo '<option value="recent">Plus récent</option>';
-echo '<option value="ancient">Plus ancient</option>';
+echo '<option value="ancien">Plus ancien</option>';
 echo '</select></div>';
 
 ?>
