@@ -52,7 +52,7 @@ function portfolio(data) {
 
     
 
-    console.log('dans la function portfolio : ', data);
+    //console.log('dans la function portfolio : ', data);
     const main = document.querySelector('main');
     //console.log(main)
 

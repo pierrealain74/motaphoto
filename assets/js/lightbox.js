@@ -98,7 +98,7 @@ function lightboxDisplay(data) {
             element.addEventListener('click', (event) => {
 
 
-                console.log('dans le lightbox click fullscreen data : ', data);
+                //console.log('dans le lightbox click fullscreen data : ', data);
 
                 //Get l'url de l'image cliquée
                 const imgElement = element.closest('figure').querySelector('.img-gallery');
@@ -120,21 +120,13 @@ function lightboxDisplay(data) {
                 lightboxCategory.innerText = data[currentImageIndex].category[0].name;
                 lightboxReference.innerText = data[currentImageIndex].reference[0];
 
-                console.log(imgElement);
+                //console.log(imgElement);
 
 
             })
         });
     }
     //lightboxDisplay(); 
-
-    
-
-    
-
-
-
-
 
 
     /*************************************Ouvrir JSON */

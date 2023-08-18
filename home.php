@@ -38,21 +38,15 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 <?php	
 	
 	//Liste deroulantes : selection d'une catégorie ou tags
-	get_template_part('template-parts/filters', null, array('data' => $data));	
+	get_template_part('template-parts/filters', null, array('data' => $data));
+	
+	//Template lightbox
+	get_template_part('template-parts/tmp_lightbox');
 
 	//Template portfolio
 /* 	get_template_part('template-parts/portfolio', null, array('data' => $data)); */
 	
 ?>
-<div class="lightbox">    
-    <button class="lightbox__next">Suivant</button>
-    <button class="lightbox__prev">Précédent</button>
-    <div class="lightbox__container">
-       <img src="" alt="" id="imgLightboxContainer">
-       <div class="lightbox-infos"><span class="lightbox-category">category</span><span class="lightbox-reference">reference</span></div>
-       <button class="lightbox__close">Fermer</button>        
-    </div>
-</div>
 
 
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
