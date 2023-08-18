@@ -168,9 +168,35 @@ function get_portfolio_items() {
 
 
     $selected_category = $_GET['category'];
+    $selected_format = $_GET['format'];
+    $selected_sort = $_GET['sort'];
     //var_dump($selected_category);
 
+    // Choisissez la clé de taxonomie en fonction de la situation
+    $taxonomy_key = !empty($selected_category) ? 'category' : (!empty($selected_format) ? 'post_tag' : '');
+
+    //var_dump('taxonomy : ', $taxonomy_key);
+
+
     $args = array(
+        'post_type' => 'portfolio',
+        'posts_per_page' => -1,
+        'tax_query' => array(),
+    );
+    
+    if (!empty($taxonomy_key)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => $taxonomy_key,// choix category / format
+            'field' => 'name', // Utilisez 'term_id', 'slug' ou 'name' en fonction de ce que vous avez
+            'terms' => !empty($selected_category) ? $selected_category : $selected_format,// mariage, concert / paysage, portrait
+        );
+    }
+
+
+   /*  
+   
+   Requete pour juste le select category  - avant le rajout des deux autres select
+   $args = array(
         'post_type' => 'portfolio', // Remplacez par le nom de votre custom post type
         'posts_per_page' => -1, // Récupère tous les éléments
         'tax_query' => array(
@@ -181,55 +207,67 @@ function get_portfolio_items() {
             ),
         ),
     );
-
+ */
+    
+ 
+    //Requete Wordpress
     $portfolio_query = new WP_Query($args);
+    //var_dump('requete wp_query : ', $portfolio_query);
 
-    $portfolio_items = array();
 
     $counter = 0;
+    if ($portfolio_query->have_posts()) {
 
-    while ($portfolio_query -> have_posts()) {
-    
-        $portfolio_query->the_post();
-    
-        //Recupérer toutes les références
-        $reference_terms = get_the_terms(get_the_ID(), 'reference');
-        $reference_values = array();
-        if ($reference_terms && !is_wp_error($reference_terms)) {
-        foreach ($reference_terms as $term) {
-            $reference_values[] = $term->name; // obtenir la valeur des références des portfolio
-        }
-        }
-    
-         //Recupérer tous les types
-         $types_terms = get_the_terms(get_the_ID(), 'type');
-         $types_values = array();
-         if ($types_terms && !is_wp_error($types_terms)) {
-         foreach ($types_terms as $type) {
-             $type_values[] = $type->name; // obtenir la valeur des types des portfolio
-         }
-         }
+        while ($portfolio_query->have_posts()) {
 
-      
-        //Créer un array complet de toutes les datas des post
-        $post_data = array(
-            'id_post' => get_the_ID(),
-            'post_title' => get_the_title(),
-            'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
-            'category' => get_the_category(),// Cat = television, concert,..
-            'tags' => get_the_tags(),//Tags = paysage,..
-            'type' => $type_values,//Types : Numérique,..
-            'reference' =>  $reference_values,//taxonomie Reference = bf2395,..
-        );
-        $data[] = $post_data; 
-        //$firstFourItems = array_slice($data, 0, 4);
-    
-        //wp_reset_postdata();
-        $counter++;
+            $portfolio_query->the_post();
+
+            //Recupérer toutes les références
+            $reference_terms = get_the_terms(get_the_ID(), 'reference');
+            $reference_values = array();
+            if ($reference_terms && !is_wp_error($reference_terms)) {
+                foreach ($reference_terms as $term) {
+                    $reference_values[] = $term->name; // obtenir la valeur des références des portfolio
+                }
+            }
+
+            //Recupérer tous les types
+            $types_terms = get_the_terms(get_the_ID(), 'type');
+            $types_values = array();
+            if ($types_terms && !is_wp_error($types_terms)) {
+                foreach ($types_terms as $type) {
+                    $type_values[] = $type->name; // obtenir la valeur des types des portfolio
+                }
+            }
+
+
+            //Créer un array complet de toutes les datas des post
+            $post_data = array(
+                'id_post' => get_the_ID(),
+                'post_title' => get_the_title(),
+                'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                'category' => get_the_category(), // Cat = television, concert,..
+                'tags' => get_the_tags(), //Tags = paysage,..
+                'type' => $type_values, //Types : Numérique,..
+                'reference' => $reference_values, //taxonomie Reference = bf2395,..
+            );
+            $data[] = $post_data;
+            //$firstFourItems = array_slice($data, 0, 4);
+
+            //wp_reset_postdata();
+            $counter++;
+        }
+        
+        wp_send_json($data);
+        wp_reset_postdata();// vide la requete
+    }
+    else {
+        // Aucun résultat trouvé
+        var_dump('Requete WPQuery vide...');
     }
     
     // Retournez les données au format JSON
-    wp_send_json($data);
+    
 }
 
 

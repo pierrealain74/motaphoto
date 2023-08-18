@@ -52,23 +52,20 @@ echo '</select>';
 
 
 
-
-
-
 /* var_dump($arrayAllCategory);
 var_dump($arrayUniqueCategory); */
 
 /**************************** SELECT TAGS (FORMAT) ********************************************/
 
-echo '<select>';
+echo '<select id="formatSelect">';
 echo '<option value="" selected>FORMATS</option>';
-echo '<option value="portraits">Portrait</option>';
+echo '<option value="portrait">Portrait</option>';
 echo '<option value="paysage">Paysage</option>';
 echo '</select>';
 
 /****************************** SELECT RECENT SORT ********************************************/
 
-echo '<select style="float: right; margin-right:0">';
+echo '<select id="sortSelect" style="float: right; margin-right:0">';
 echo '<option value="" selected>TRIER PAR</option>';
 echo '<option value="recent">Plus récent</option>';
 echo '<option value="ancient">Plus ancient</option>';
