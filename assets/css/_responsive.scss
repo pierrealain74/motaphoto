@@ -1,63 +1,81 @@
 /* Change classical menu to Burger menu */
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) and (max-width: 800px){
 
-  .titleimgInfos{
-
-    font-size: 6vw;
-
-
-  }
-  .taxonomyimgInfos{
-    line-height: 12px;
-  }
-
-  .modal-content {
-
-    width: 84%;
-  }
-  .wpcf7-form label {
-
-  }
-
+  .site {
+    overflow-x: hidden;
 }
 
-@media screen and (max-width: 600px) {
 
-    p.site-title a {
-        font-size: calc(22px + 1vw);
-        letter-spacing: 1px;
-    }
-    .site-header {
-        align-items: center;
-    }
+.filters {
+  padding: 2rem;
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: unset;
+  flex-direction: column;
 
-    .gallery {
+  height: 100%;
+  
+  select{
 
-      grid-template-columns: unset;
+    margin-right: 0;
+    padding: 1.1rem 3.2rem;
+    font-size: 20px;
+    margin-bottom: 17px;
+  
+  }
+}
+  figure {
+    position: relative;
+    display: flex;
+    align-items: unset;
+   
+    margin: 0;
+    /* width: 250px;  min-width: 260px;
+    height: 300px;*/
+    background-color: #ff5c00;
+    margin-bottom: 10px;
 
-    }
- /*    .item{
-      grid-column: unset;
+     img {
+      flex: 1;
+      max-width: 100%;
+      object-fit: cover;
+      min-width: 250px;
+      min-height: 250px;
 
-    } */
-    img {
+  }
+}
 
-      height: 300px;
+  p.site-title a {
+    font-size: calc(22px + 1vw);
+    letter-spacing: 1px;
+  }
+  .site-header {
+    align-items: center;
+  }
+
+  .gallery {
+
+  grid-template-columns: unset;
+
+  }
+
+  img {
+
+    height: 300px;
   }
   .site-footer ul.menu-footer li {
-    margin-right: 0rem;
+  margin-right: 0rem;
   }
 
   /*Page infos-img.php avec minislider etc.. *********/
   .container, .containerimgInfos {
-    padding: 1rem 2rem;
+  padding: 1rem 2rem;
   }
 
   .imgInfos {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   }
-
 
   figure .imgSrc{
     order: 1;
@@ -68,10 +86,11 @@
   }
   .titleimgInfos {
 
-    font-size: 11vw;
+    font-size: 6vw;
   }
   .taxonomyimgInfos{
     font-size: 4.3vw !important;
+    line-height: 12px;
   }
 
   .contactImgInfos {
@@ -85,11 +104,9 @@
   }
 
 
-}
 
 
-/* Change classical menu to Burger menu */
-@media screen and (max-width: 800px) {
+
 
   .modal-content {
 
@@ -97,21 +114,19 @@
   }
 
 
-/*Page infos-img.php avec minislider etc.. *********/
-.containerimgInfos {
+  /*Page infos-img.php avec minislider etc.. *********/
+  .containerimgInfos {
   padding: 1rem 2rem;
-}
-.contactImgInfos p{
+  }
+  .contactImgInfos p{
   font-size: .8rem;
-}
-.taxonomyimgInfos{
+  }
+  .taxonomyimgInfos{
 
   font-size: 2.3vw;
   line-height: 35px;
 
-}
-
-
+  }
 
 }
 
@@ -124,6 +139,7 @@
     #menuToggle {
       display: block; /* Afficher le menu burger sur les petits écrans */
     }
+
   
     .menu-fullscreen {
         display: none;

@@ -1,6 +1,8 @@
 <?php 
 
 /**Creation des select */
+
+/* echo '<div class="container">'; // Container des Select */
 echo '<div class="filters">'; // Container des Select
 
 

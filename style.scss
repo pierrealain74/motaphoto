@@ -33,6 +33,25 @@ $image-home-url: "<?php echo $thumbnail; ?>";
 	--secondary-color: #CD006B;
 	--third-color: #EEE325;
 }
+
+
+
+
+
+.site{
+  width: 100vw;
+}
+
+
+
+
+
+
+
+
+
+
+
 button{
   font-size: 1.1rem;
   border: none;
@@ -103,7 +122,7 @@ body {
 }
 .gallery {
   display: grid;
-  margin: 3em 0;
+  margin: 0;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-template-rows: 1fr;
   grid-gap: 1em;
@@ -326,6 +345,7 @@ cursor: pointer;
   width: 100%;
   display: flex;
   justify-content: center;  
+  margin: 3rem;
 
 }
 .loadmoreClass{
@@ -340,8 +360,9 @@ cursor: pointer;
 .filters{
   max-width: 1300px;
   margin: 0 auto;
+  padding: 2rem 0;
+  height: 100%;
   padding: 3rem 7rem;
-  height: 80px;
 
   select{
     margin-right: 15px;
