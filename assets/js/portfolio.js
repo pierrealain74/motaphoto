@@ -101,6 +101,8 @@ function portfolio(data) {
 
     loadMore(data);//Faire fonctionner le bouton LoadMore
 
+    lightboxDisplay(data);
+
 
 
 }// Endof function portfolio(data)

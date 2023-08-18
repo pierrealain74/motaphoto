@@ -44,11 +44,23 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 /* 	get_template_part('template-parts/portfolio', null, array('data' => $data)); */
 	
 ?>
-
+<div class="lightbox">    
+    <button class="lightbox__next">Suivant</button>
+    <button class="lightbox__prev">Précédent</button>
+    <div class="lightbox__container">
+       <img src="" alt="" id="imgLightboxContainer">
+       <div class="lightbox-infos"><span class="lightbox-category">category</span><span class="lightbox-reference">reference</span></div>
+       <button class="lightbox__close">Fermer</button>        
+    </div>
+</div>
 
 
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/loadmore.js' ?>"></script>
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox.js' ?>"></script>
+
+
+
 
 </main>
 
