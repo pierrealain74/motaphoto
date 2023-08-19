@@ -6,6 +6,19 @@
 }
 
 
+.modal {
+
+  padding-top: 120px; /* Location of the box */
+  left: 0;
+  top: 0;
+}
+
+.modal-content {
+  width: 80%;
+  height: 90%;
+}
+
+
 .filters {
   padding: 2rem;
   display: flex;
@@ -103,17 +116,6 @@
     order: 4;
   }
 
-
-
-
-
-
-  .modal-content {
-
-    width: 84%;
-  }
-
-
   /*Page infos-img.php avec minislider etc.. *********/
   .containerimgInfos {
   padding: 1rem 2rem;
@@ -196,9 +198,4 @@
         margin-top: 100px;
       }
 
-/*       .filters{
-        display: flex;
-        flex-direction: column;
-
-      } */
-}
+    }

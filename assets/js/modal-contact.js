@@ -1,30 +1,42 @@
-// Get the modal
-var modal = document.getElementById('myModal');
+/**DOM ************************************************************************/
 
-// Get the button that opens the modal
-var btContact = document.querySelector(".btContact");
+// Get the modal
+const modal = document.getElementById('myModal');
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("close")[0];
+
+//Get "Contact" boutons menu or menu responsive
+const btContact = document.querySelector(".btContact");
+const menuwpContact = document.querySelector('.menuwp-contact a'); // Bouton contact dans le menu header
+const menuwpContactResponsive = document.querySelector('.menu-fullscreen .menuwp-contact a');
 
 
-const menuwpContact = document.querySelector('.menuwp-contact a');
-menuwpContact.addEventListener('click', () => {
-    
-    //console.log('click');
-    modal.style.display = "block";//to display modal contact	
-    
 
 
-});
+
+/**LOGIC **********************************************************************/
+
+// Fonction d'ouverture de modal contact commune des 2 boutons
+const openContactModal = () => {
+    modal.style.display = "block"; // Afficher le modal de contact
+    console.log('menu header contact cliqué : ', modal);
+};
+
+// Ajouter l'événement aux deux sélecteurs
+menuwpContact.addEventListener('click', openContactModal);
+menuwpContactResponsive.addEventListener('click', openContactModal);
 
 
-// When the user clicks the button, open the modal 
+
+// Ouverture modal contcat sur le bouton contact à coté du mini-slider (page infos-img.php)
 if (btContact !== null) {
 
     btContact.onclick = function () {
 
-        modal.style.display = "block";//to display modal contact	
+        modal.style.display = "block";//to display modal contact
+
+        //console.log('menu header contact cliké : ', modal)
 	
         let ref = document.querySelector('.ref').textContent;//get the actual REF displayed in html page
         ref = ref.replace("Reference : ", "");//Trunck "reference : bf001" for "bf001"
