@@ -20,9 +20,9 @@
 var data_portfolio = [];
 
 //Fetch Json File defaut (tous les portfolios)
-const json_File = themeDirectoryUri + '/assets/json/portfolio-data.json';
-console.log('json file dans portfolio.js : ', json_File)
-fetch(json_File)
+const json_File2 = themeDirectoryUri + '/assets/json/portfolio-data.json';
+//console.log('json file dans portfolio.js : ', json_File2)
+fetch(json_File2)
     .then(response => response.json()) // Décoder le JSON en un objet JavaScript
     .then(data => {
 

@@ -17,21 +17,13 @@
 
 
 get_header();
-
-
 ?>
+<main id="primary" class="site-main">
 
 <script>
-// Variable themeDirectoryUri accessible en JavaScript
+// Définissez la variable themeDirectoryUri pour qu'elle soit accessible en JavaScript
 var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 </script>
-
-
-<main id="primary" class="site-main">
-	<script>
-	// Définissez la variable themeDirectoryUri pour qu'elle soit accessible en JavaScript
-	var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
-	</script>
 
 <!--////////////////////////////////////Carousel//////////////////////////////////////////////////////-->
 
@@ -77,15 +69,15 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 				?>
 
 			</div>
-				<!--Afficher la photo-->
+				<!--Afficher la photo sur la partie de droite -->
 
 			<figure class="item">
-					<div class="rolloverImgInfos">
-						<button class="btFullScreen"></button>
+					<div class="rolloverImg">
+						<button class="rolloverImg-fullscreen"></button>
 					</div> 
 					<?php
 
-					echo '<img src="' . $imageElement['thumbnail'] . '" alt="'. $imageElement['post_title'] .'" class="imgSrc" data-index="'.$index.'">';
+					echo '<img src="' . $imageElement['thumbnail'] . '" alt="'. $imageElement['post_title'] .'" class="img-gallery" data-index="'.$index.'">';
 					?>			
 			</figure>
 			<div class="contactImgInfos item">
@@ -119,7 +111,7 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	</div><!--fin imgInfos-->
 </div><!--Container-->
 <?php 
-
+/* 
 //Afficher les photos de la meme categorie de la photo principale
 
 
@@ -138,20 +130,24 @@ if($thumbnailsFiltered == null){
 	echo '<div class="container"><section class="gallery"><p>&#128512; Pas de résultat !</p></section></div>';
 }else{
 	get_template_part('template-parts/portfolio', null, array('data' => $thumbnailsFiltered));
-}
+} */
 
+
+
+//get_template_part('template-parts/tmp_lightboxInfo');
+//Péparer template lightbox
+get_template_part('template-parts/tmp_lightbox');
 ?>
 
-<!--lightbox INFOS************Just afficher l'image en plein ecran******************-->
-<div class="lightbox">    
-    <div class="lightbox__container">
-       <img src="" alt="" class="imgLightboxContainer">
-       <button class="lightbox__close">Fermer</button>        
-    </div>
-</div>
+
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/minislide.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox-infos.js' ?>"></script>
+<!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/lightbox-infos.js' ?>"></script> -->
+
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/loadmore.js' ?>"></script>
+<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox.js' ?>"></script>
+
 
 </main><!-- #main -->
 <?php

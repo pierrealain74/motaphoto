@@ -8,7 +8,7 @@ const lightboxContainer = document.querySelector('.lightbox-container');
 
 //Click sur icon fullscreen pour ouvrir l'image dans lightbox
 
-	btFullscreen.addEventListener('click', () => {
+btFullscreen.addEventListener('click', () => {
 
 		//Get l'url de l'image cliquée
 		const imgSrcElement = document.querySelector('.imgSrc').getAttribute('src');

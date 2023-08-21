@@ -28,10 +28,7 @@ fetch(json_File)
     console.error('Erreur lors de la récupération du fichier JSON :', error);
   });
 
-/*   
-Chooper l'index dasn l'url en get via JS
-const urlParams = new URLSearchParams(window.location.search);
-let index = urlParams.get('index'); */
+
 
 var figureImg = document.querySelector('figure img');// Photo principale
 var minisliderImg = document.querySelector('.minislider img');//Photo minislider
@@ -90,9 +87,11 @@ arrowblackPrev.addEventListener('click', (event) => {
   if (minisliderIndex < 0) {
     minisliderIndex = data_portfolio.length - 1;
   }
+
+  //Affiche ll'image suivante
   minisliderImg.setAttribute('src', data_portfolio[minisliderIndex].thumbnail);
 
-    //Display Title, reference, type, format,...of main photos
+  //Display Title, reference, type, format,...of main photos
   displayImgInfo(dataindex);
   
   //displayLike(dataindex);//affiche les photos dans 'Vous aimerez aussi'
@@ -117,59 +116,48 @@ function displayImgInfo(dataindex) {
   
   taxonomyimgInfos.innerHTML = '<span class="ref">Reference : ' + ref + '</span><br />Catégorie : ' + cat + '<br />Format : ' + tag + '<br />Type : ' + type + '<br />Année : 2021';
 
-  displayLike(dataindex, cat);
-  
   return taxonomyimgInfos.innerHTML;
 
-
+  displayLike(cat);
 
 }
 
 //Crée un tableau de data via la catégory de la photo principale
-//pour afficher dans la section "vous aimerez aussi"
-function displayLike(dataindex, cat) {
+//pour afficher dans la section "vous aimerez aussi" via Portfolio.js
+function displayLike(cat) {
   
-  //récupére la liste des thumbnail + cat + ref dans le json
-  //à partir de la catégorie
- /*  let cat = document.querySelector('.category').textContent;
-  cat = cat.replace("Catégorie : ", "");
-  */
-  //console.log('category : ', cat)
+  var container = document.querySelector(".container");
   
-  const dataWithCat = [];//juste declarer le tableau pour l'utiliser apres
+  const dataCategorized = [];//juste declarer le tableau pour l'utiliser apres
 
   data_portfolio.forEach(item => {
 
-      const categories = item.category;//prendre toutes les catégories du json
+      const categories = item.category;//prendre chaque catégories du json et la comparer avec la cat donnée
 
-      categories.forEach(category => {
+    categories.forEach(category => {
 
-        if (category.name === cat) {//si une catégorie match avec la catégorie donnée
-          const thumbnail = item.thumbnail;
-          const reference = item.reference;
+      if (category.name === cat) {//si une catégorie match avec la catégorie donnée
+  
+        dataCategorized.push({
 
-          
+          id_post: item.id_post,
+          post_title: item.post_title,
+          post_date: item.post_date,
+          thumbnail: item.thumbnail,
+          category: item.category,
+          tags: item.tags,
+          type: item.type,
+          reference: item.reference
 
-
-
-
-
-
-
-          //console.log(thumbnail,)
-
-/*             dataWithCat.push({
-
-              thumbnail: thumbnail,
-              category: cat,
-              reference: reference,
-
-            }) */
-        }
+        });
 
 
-      });
+      };
+    });
   });
+  //console.log('data categorize dans minislide', dataCategorized);
+  //return dataCategorized;
 
-  return dataWithCat;
+  container.remove();
+  //portfolio(dataCategorized);
 }
