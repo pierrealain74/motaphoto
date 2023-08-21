@@ -6,7 +6,7 @@
  * 
  * Data sources : 
  * 
- * 1--J SON FILE(tous portfolios) json > portolio-data.json
+ * 1--JSON FILE(tous portfolios) json > portolio-data.json
  * 
  * 2-- Appel de la fonction portfolio(jsonfile)
  * 
@@ -16,11 +16,12 @@
  */
 
 
-// Initialiser le tableau des portfolio
+// Initialiser le tableau des portfolios
 var data_portfolio = [];
 
 //Fetch Json File defaut (tous les portfolios)
 const json_File = themeDirectoryUri + '/assets/json/portfolio-data.json';
+console.log('json file dans portfolio.js : ', json_File)
 fetch(json_File)
     .then(response => response.json()) // Décoder le JSON en un objet JavaScript
     .then(data => {
@@ -28,7 +29,7 @@ fetch(json_File)
 
 
 
-
+        //console.log('data dans portfolio.js : ', data)
 
         
         data_portfolio = data; // Affecter les données à la variable globale

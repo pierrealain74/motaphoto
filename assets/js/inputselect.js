@@ -38,8 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         
 
                         var container = document.querySelector(".container");
+                        container.remove();
+                        
                         //console.log('gallery dans input select : ', gallery)
-                        container.innerHTML = ""; // Efface le contenu existant
+                        //container.innerHTML = ""; // Efface le contenu existant
                         
                         //console.log('json categories dans input select : ', data)
 
@@ -75,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         var container = document.querySelector(".container");
                         //console.log('gallery dans input select : ', gallery)
-                        container.innerHTML = ""; // Efface le contenu existant
+                        container.remove();
                         
                         //console.log('json categories dans input select : ', data)
 
@@ -141,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                   var container = document.querySelector(".container");
                   //console.log('gallery dans input select : ', gallery)
-                  container.innerHTML = ""; // Efface le contenu existant
+                  container.remove();
 
                   //console.log('json categories dans input select : ', data
 
