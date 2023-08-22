@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         categorySelect.addEventListener("change", function() {
                     
                 var selectedCategory = categorySelect.value;
-          var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + selectedCategory;
-          urlSort = url;
+                var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + selectedCategory;
+                urlSort = url;
                 //var url = ajax_object.ajax_url.replace('/wp-admin/admin-ajax.php', '/portfolio.php')
                 //console.log('url cat :', url) http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=T%C3%A9l%C3%A9vision
                 

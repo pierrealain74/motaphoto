@@ -64,6 +64,8 @@ arrowblackNext.addEventListener('click', (event) => {
 
   //Display Title, reference, type, format,...of main photos
   displayImgInfo(dataindex);
+
+
  
 
 });
@@ -93,6 +95,8 @@ arrowblackPrev.addEventListener('click', (event) => {
 
   //Display Title, reference, type, format,...of main photos
   displayImgInfo(dataindex);
+
+
   
   //displayLike(dataindex);//affiche les photos dans 'Vous aimerez aussi'
 
@@ -116,10 +120,40 @@ function displayImgInfo(dataindex) {
   
   taxonomyimgInfos.innerHTML = '<span class="ref">Reference : ' + ref + '</span><br />Catégorie : ' + cat + '<br />Format : ' + tag + '<br />Type : ' + type + '<br />Année : 2021';
 
+  //console.log('cat dans fonc displayInfo : ', cat);
+
+
+    var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + cat;
+    urlSort = url;
+    //var url = ajax_object.ajax_url.replace('/wp-admin/admin-ajax.php', '/portfolio.php')
+    //console.log('url cat :', url) http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=T%C3%A9l%C3%A9vision
+
+
+  fetch(url)//lis le array json dans l'url : http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=Mariage
+    .then(response => response.json())
+    .then(data => {
+
+
+      var container = document.querySelector(".container");
+      container.remove();
+
+      //console.log('gallery dans input select : ', gallery)
+      //container.innerHTML = ""; // Efface le contenu existant
+
+      //console.log('json categories dans input select : ', data)
+
+      portfolio(data);
+
+    });
+
+
+
+ 
+
   return taxonomyimgInfos.innerHTML;
 
-  displayLike(cat);
 
+  
 }
 
 //Crée un tableau de data via la catégory de la photo principale

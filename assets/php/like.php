@@ -1,7 +1,7 @@
 <?php
 //Crée un tableau de portoflio de la categorie donnée
-function createThumbnailsWithReferences($data, $categoryNameToSearch) {
-    $thumbnailsWithReferences = [];
+function createPortfolioCategorized($data, $categoryNameToSearch) {
+    $data_categorized = [];
 
     foreach ($data as $item) {
         $categories = $item['category'];
@@ -15,7 +15,7 @@ function createThumbnailsWithReferences($data, $categoryNameToSearch) {
                 $tags = $item['tags'];
                 $cat2 = $item['category'];
 
-                $thumbnailsWithReferences[] = [
+                $data_categorized[] = [
                     'thumbnail' => $thumbnail,
                     'reference' => $reference,
                     'post_title' => $post_title,
@@ -28,7 +28,7 @@ function createThumbnailsWithReferences($data, $categoryNameToSearch) {
         }
     }
 
-    return $thumbnailsWithReferences;
+    return $data_categorized;
 }
 
 //Supprimer la photo principale (deja affichée en haut de la page) du tableau $thumbnailsWithReferences

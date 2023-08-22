@@ -95,7 +95,8 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 					$indexMini++;//On prend l'image suivante
 
 					if($indexMini >= count($data)-1){ // si la photo principale est la derniere photo de la liste on repart à 0
-					$index = 0;
+					
+						$index = 0;
 
 					} 
 					
@@ -107,39 +108,19 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	   			<button class="arrowblackPrev">Precedent</button>
 
 			</div>
+
+
+
 			<div class="like item">Vous aimerez aussi...</div>
+
+
+
 	</div><!--fin imgInfos-->
 </div><!--Container-->
+
 <?php 
-/* 
-//Afficher les photos de la meme categorie de la photo principale
-
-
-include get_stylesheet_directory() . '/assets/php/like.php';//contient les fonctions pour créer un array avec uniquement les catégories de la photo principale ET fonciton de suppression de l'item photo principal (pour pas la répéter)
-
-// Créer le tableau initial
-$thumbnailsWithReferences = createThumbnailsWithReferences($data, $categoryNameToSearch);
-
-// Obtenir l'id_post à enlever
-$idPostToRemove = $_GET['id'];
-
-// Filtrer le tableau pour enlever l'élément avec l'id_post spécifié
-$thumbnailsFiltered = filterOutItemById($thumbnailsWithReferences, $idPostToRemove);
-
-if($thumbnailsFiltered == null){
-	echo '<div class="container"><section class="gallery"><p>&#128512; Pas de résultat !</p></section></div>';
-}else{
-	get_template_part('template-parts/portfolio', null, array('data' => $thumbnailsFiltered));
-} */
-
-
-
-//get_template_part('template-parts/tmp_lightboxInfo');
-//Péparer template lightbox
 get_template_part('template-parts/tmp_lightbox');
 ?>
-
-
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/minislide.js"></script>
 <!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/lightbox-infos.js' ?>"></script> -->
