@@ -77,7 +77,7 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 					</div> 
 					<?php
 
-					echo '<img src="' . $imageElement['thumbnail_mediumlarge'] . '" alt="'. $imageElement['post_title'] .'" class="img-gallery" data-index="'.$index.'">';
+					echo '<img src="' . $imageElement['thumbnail_mediumlarge'] . '" alt="'. $imageElement['post_title'] .'" class="imageInfos" data-index="'.$index.'">';
 					?>			
 			</figure>
 			<div class="contactImgInfos item">

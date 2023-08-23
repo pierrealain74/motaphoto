@@ -14,7 +14,7 @@ btFullscreen.addEventListener('click', () => {
 
 
 		//Get l'url de l'image cliquée
-		let imgSrcElement = document.querySelector('.img-gallery').getAttribute('src');
+		let imgSrcElement = document.querySelector('.imageInfos').getAttribute('src');
 	
 		console.log('image source dans lightboxInfos: ', imgSrcElement);
 		//console.log('imgLightboxInfos : ', imgLightboxInfos);
