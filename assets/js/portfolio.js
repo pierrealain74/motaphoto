@@ -16,7 +16,6 @@
  */
 
 
-
 // Initialiser le tableau des portfolios
 var data_portfolio = [];
 

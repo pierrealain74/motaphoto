@@ -158,27 +158,6 @@ add_action('delete_post', 'save_portfolio_update_json');
 add_action('wp_insert_post', 'save_portfolio_update_json');
 
 
-/* function save_portfolio_update_json() {
-    // Vérifie si le formulaire est soumis
-    if (isset($_POST['post_type']) OR $_POST['post_type'] === 'portfolio') {
-
-        require_once get_stylesheet_directory() . '/assets/php/create_json_portfolio.php';
-
-    }
-}
-/* add_action('wp_loaded', 'save_portfolio_update_json'); */
-
-// Action lors de la sauvegarde/mise à jour d'un post
-/* add_action('save_post', 'save_portfolio_update_json'); */
-
-// Action lors de la suppression d'un post
-/* add_action('delete_post', 'save_portfolio_update_json'); */
-
-// Action lors de la création d'un post
-/* add_action('wp_insert_post', 'save_portfolio_update_json');  */
-
-
-
 //Js avec evenlistener sur le select categorie
 function ajax_request()
 {
