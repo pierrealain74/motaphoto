@@ -1,26 +1,39 @@
 /* LightBOX JS */
 /* const imgGallery = document.querySelectorAll('.img-gallery') */
 
-const lightbox = document.querySelector('.lightbox');
-const btFullscreen = document.querySelector('.btFullScreen');
+const lightboxInfos = document.querySelector('.lightboxInfos');
+const btFullscreen = document.querySelector('.rolloverImg-fullscreenInfos');
 const btClose = document.querySelector('.lightbox__close');
-const lightboxContainer = document.querySelector('.lightbox-container');
+const imgLightboxInfos = document.querySelector('.imgLightboxInfos');
+
+
 
 //Click sur icon fullscreen pour ouvrir l'image dans lightbox
 
 btFullscreen.addEventListener('click', () => {
 
-		//Get l'url de l'image cliquée
-		const imgSrcElement = document.querySelector('.imgSrc').getAttribute('src');
-		//console.log('image source: ', imgSrcElement);
 
+		//Get l'url de l'image cliquée
+		let imgSrcElement = document.querySelector('.img-gallery').getAttribute('src');
+	
+		console.log('image source dans lightboxInfos: ', imgSrcElement);
+		//console.log('imgLightboxInfos : ', imgLightboxInfos);
+	
+
+
+
+
+
+
+
+	
 
 		//Afficher l'image cliquée dans lightbox **********************************/
-        document.querySelector('.imgLightboxContainer').setAttribute('src', imgSrcElement);
+        imgLightboxInfos.setAttribute('src', imgSrcElement);
     
 		
 		//Afficher la lightbox
-		lightbox.classList.add('show');
+		lightboxInfos.classList.add('show');
 
 
 	})
@@ -28,5 +41,5 @@ btFullscreen.addEventListener('click', () => {
 
 
 btClose.addEventListener('click', () => {
-    lightbox.classList.remove('show');
+    lightboxInfos.classList.remove('show');
 })

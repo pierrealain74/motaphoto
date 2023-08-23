@@ -126,17 +126,58 @@ add_action( 'init', 'portfolio_post_type' );
 
 
 
+
+/*TEST CREATION JSON -- IMAGES SMAL FULL */
+
+
+
+/* function load_create_json_portfolio() {
+    require_once get_stylesheet_directory() . '/assets/php/create_json_portfolioTest.php';
+}
+
+add_action('init', 'load_create_json_portfolio'); */
+
 /* MAJ du fichier JSON Portfolio */
-// Fonction personnalisée pour exécuter votre programme
-function save_portfolio_update_json() {
+
+
+function save_portfolio_update_json($post_id = null) {
+    // Si $post_id n'est pas fourni, on vérifie le type de post en cours de traitement
+    if ($post_id === null || get_post_type($post_id) === 'portfolio') {
+        require_once get_stylesheet_directory() . '/assets/php/create_json_portfolio.php';
+        
+    }
+}
+
+// Action lors de la sauvegarde/mise à jour d'un post
+add_action('save_post', 'save_portfolio_update_json');
+
+// Action lors de la suppression d'un post
+add_action('delete_post', 'save_portfolio_update_json');
+
+// Action lors de la création d'un post
+add_action('wp_insert_post', 'save_portfolio_update_json');
+
+
+/* function save_portfolio_update_json() {
     // Vérifie si le formulaire est soumis
-    if (isset($_POST['post_type']) && $_POST['post_type'] === 'portfolio') {
+    if (isset($_POST['post_type']) OR $_POST['post_type'] === 'portfolio') {
 
         require_once get_stylesheet_directory() . '/assets/php/create_json_portfolio.php';
 
     }
 }
-add_action('wp_loaded', 'save_portfolio_update_json');
+/* add_action('wp_loaded', 'save_portfolio_update_json'); */
+
+// Action lors de la sauvegarde/mise à jour d'un post
+/* add_action('save_post', 'save_portfolio_update_json'); */
+
+// Action lors de la suppression d'un post
+/* add_action('delete_post', 'save_portfolio_update_json'); */
+
+// Action lors de la création d'un post
+/* add_action('wp_insert_post', 'save_portfolio_update_json');  */
+
+
 
 //Js avec evenlistener sur le select categorie
 function ajax_request()
@@ -153,6 +194,7 @@ function ajax_request()
    /*  } */
 }
 add_action('wp_enqueue_scripts', 'ajax_request');
+
 
 
 
@@ -246,6 +288,7 @@ function get_portfolio_items() {
                 'id_post' => get_the_ID(),
                 'post_title' => get_the_title(),
                 'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                'thumbnail_mediumlarge' => get_the_post_thumbnail_url(get_the_ID(), 'medium_large'),
                 'category' => get_the_category(), // Cat = television, concert,..
                 'tags' => get_the_tags(), //Tags = paysage,..
                 'type' => $type_values, //Types : Numérique,..

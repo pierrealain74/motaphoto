@@ -233,9 +233,11 @@ figure {
     flex: 1;
     max-width: 100%;
     object-fit: cover;
-    height: 400px;
+    height: 500px;
   }
 }
+
+
 /* Effet de rollover */
 figure:hover .rolloverImg {
   opacity: 0.8;

@@ -72,12 +72,12 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 				<!--Afficher la photo sur la partie de droite -->
 
 			<figure class="item">
-					<div class="rolloverImgInfos">
-						<button class="rolloverImg-fullscreenInfos"></button>
+					<div class="rolloverImg">
+						<button class="rolloverImg-fullscreen"></button>
 					</div> 
 					<?php
 
-					echo '<img src="' . $imageElement['thumbnail_mediumlarge'] . '" alt="'. $imageElement['post_title'] .'" class="img-gallery" data-index="'.$index.'">';
+					echo '<img src="' . $imageElement['thumbnail'] . '" alt="'. $imageElement['post_title'] .'" class="img-gallery" data-index="'.$index.'">';
 					?>			
 			</figure>
 			<div class="contactImgInfos item">
@@ -102,7 +102,7 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 					
 
 					$imageElementNext = $data[$indexMini];
-					echo '<img src="' . $imageElementNext['thumbnail_mediumlarge'] . '" alt="'. $imageElementNext['post_title'] .'" class="imgminislider" data-index="'.$indexMini.'">';
+					echo '<img src="' . $imageElementNext['thumbnail'] . '" alt="'. $imageElementNext['post_title'] .'" class="imgminislider" data-index="'.$indexMini.'">';
 				?>
 				<button class="arrowblackNext">Suivant</button>
 	   			<button class="arrowblackPrev">Precedent</button>
@@ -119,13 +119,11 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 </div><!--Container-->
 
 <?php 
-
-get_template_part('template-parts/tmp_lightboxInfo');
 get_template_part('template-parts/tmp_lightbox');
 ?>
 
-<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/minislide.js' ?>"></script>
-<script src="<?php echo get_stylesheet_directory_uri().'/assets/js/lightbox-infos.js' ?>"></script>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/minislide.js"></script>
+<!-- <script src="<?php //echo get_stylesheet_directory_uri().'/assets/js/lightbox-infos.js' ?>"></script> -->
 
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/portfolio.js' ?>"></script>
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/js/loadmore.js' ?>"></script>

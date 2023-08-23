@@ -93,7 +93,7 @@ Author: Pierre Alain FAURE
   justify-content: flex-end;
 }
 
-figure .imgSrc {
+figure .img-gallery {
   flex: 1 !important;
   height: auto !important;
   object-fit: unset !important;
@@ -109,6 +109,15 @@ figure:hover .rolloverImgInfos {
   transition: background 0.3 ease-in;
 }
 
+.rolloverImg-fullscreenInfos {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  background: url(./assets/icon/icon-fullscreen.svg) center center/100% 100%;
+}
+
 .rolloverImgInfos {
   position: absolute;
   top: 0;
@@ -120,7 +129,7 @@ figure:hover .rolloverImgInfos {
   transition: opacity 0.4s ease-in-out;
 }
 
-.btFullScreen {
+.rolloverImg-fullscreenInfos {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -168,6 +177,40 @@ figure:hover .rolloverImgInfos {
   font-family: "SpaceMono-Regular";
   font-variant-caps: small-caps;
   font-size: 1.9rem;
+}
+
+.lightbox__containerInfos {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  /*   margin-left: 50px;
+    margin-right: 50px; */
+  animation: animImgPortfolio 0.5s;
+}
+
+.lightboxInfos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  overflow: hidden;
+  visibility: hidden;
+}
+.lightboxInfos img {
+  max-width: 100%;
+  height: 80vh;
+  width: auto;
+  animation: animImgPortfolio 0.5s;
+  position: relative;
+}
+.lightboxInfos.show {
+  visibility: visible;
 }
 
 /* @import "./assets/css/normalize";*/
@@ -572,7 +615,7 @@ figure img {
   flex: 1;
   max-width: 100%;
   object-fit: cover;
-  height: 400px;
+  height: 500px;
 }
 
 /* Effet de rollover */

@@ -42,13 +42,6 @@ fetch(json_File2)
     // Utiliser l'objet URL pour extraire les paramètres de l'URL
     var url = new URL(currentUrl);
     var cat = url.searchParams.get("cat");
-        
-
-
-
-
-
-
 
 
     // Si une categorie existe dans l'url alors appeler triater le jsondata par defaut*******************
@@ -56,7 +49,7 @@ fetch(json_File2)
         if (cat !== null) {
 
             /* console.log("id_post:", id_post); */
-            console.log("categoryNameToSearch:", cat);
+            //console.log("categoryNameToSearch:", cat);
 
     
             portfolioCategorized(cat);
@@ -76,10 +69,11 @@ fetch(json_File2)
                             categories.forEach(category => {
                                 if (category.name === cat) {
 
-                                    const { thumbnail, reference, post_title, id_post, tags, category: cat2 } = item;
+                                    const { thumbnail, thumbnail_mediumlarge, reference, post_title, id_post, tags, category: cat2 } = item;
                 
                                     dataCategorized.push({
                                         thumbnail,
+                                        thumbnail_mediumlarge,
                                         reference,
                                         post_title,
                                         id_post,
@@ -94,7 +88,7 @@ fetch(json_File2)
                 
                         portfolio(dataCategorized);
                     
-                        console.log('data caegpories : ', dataCategorized);
+                        //console.log('data caegpories : ', dataCategorized);
             }
 
 
@@ -117,7 +111,7 @@ fetch(json_File2)
 
         portfolio(data_portfolio);
         
-        
+        console.log('data portfolio : ', data_portfolio);
         
         console.log("Data par defaut car les paramètres ne sont pas définis dans l'URL Category, Id_post...");
     }
@@ -226,6 +220,6 @@ function createFigureHTML(item, i) {
             <button class="rolloverImg-fullscreen"></button>
             <a href="infos-photo/?id=${item.id_post}&cat=${item.category[0].name}&index=0" class="rolloverImg-eye"></a>
     </div>
-    <img src="${item.thumbnail}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="${i}">`;
+    <img src="${item.thumbnail_mediumlarge}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="${i}">`;
 
 }// Endof function createFigureHTML(item, i)

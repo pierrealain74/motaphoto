@@ -16,6 +16,7 @@
  */
 
 
+
 // Initialiser le tableau des portfolios
 var data_portfolio = [];
 
@@ -29,13 +30,118 @@ fetch(json_File2)
 
 
 
-        //console.log('data dans portfolio.js : ', data)
 
+
+
+
+    //     CAT URL ??    // 
+
+    // Obtenir l'URL actuelle
+    var currentUrl = window.location.href;
+
+    // Utiliser l'objet URL pour extraire les paramètres de l'URL
+    var url = new URL(currentUrl);
+    var cat = url.searchParams.get("cat");
+        
+
+
+
+
+
+
+
+
+    // Si une categorie existe dans l'url alors appeler triater le jsondata par defaut*******************
+        
+        if (cat !== null) {
+
+            /* console.log("id_post:", id_post); */
+            console.log("categoryNameToSearch:", cat);
+
+    
+            portfolioCategorized(cat);
+
+
+
+            //produire le data json pour une catégorie donnée
+    
+            function portfolioCategorized(cat) {
+
+
+                        const dataCategorized = [];
+                
+                        data.forEach(item => {
+                            const categories = item.category;
+                
+                            categories.forEach(category => {
+                                if (category.name === cat) {
+
+                                    const { thumbnail, reference, post_title, id_post, tags, category: cat2 } = item;
+                
+                                    dataCategorized.push({
+                                        thumbnail,
+                                        reference,
+                                        post_title,
+                                        id_post,
+                                        tags,
+                                        category: cat2,
+                                    });
+                                    return; // Sortir de la boucle interne
+                                }
+                            });
+                        });
+                        
+                
+                        portfolio(dataCategorized);
+                    
+                        console.log('data caegpories : ', dataCategorized);
+            }
+
+
+    
+    
+       
+
+
+
+
+
+    
+    } else {//lancer portfolio avec les data par defaut
+        
+        
         
         data_portfolio = data; // Affecter les données à la variable globale
+
+        
+
         portfolio(data_portfolio);
+        
+        console.log('data portfolio : ', data_portfolio);
+        
+        console.log("Data par defaut car les paramètres ne sont pas définis dans l'URL Category, Id_post...");
+    }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+        //console.log('data dans portfolio.js : ', data)
+
+
+
+   
+
+        
 
 
 
@@ -46,6 +152,7 @@ fetch(json_File2)
         // Gérer les erreurs éventuelles
         console.error('Erreur lors de la récupération du fichier JSON :', error);
     });
+
 
 
 function portfolio(data) {

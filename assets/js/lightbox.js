@@ -6,13 +6,7 @@
  * 
  *  
  */ 
-
-
-
-
-
-
-    //////////////////////////////////////////////////////////Click sur icon fullscreen pour ouvrir l'image dans lightbox
+////Click sur icon fullscreen pour ouvrir l'image dans lightbox
 
 function lightboxDisplay(data) {
 
@@ -44,8 +38,11 @@ function lightboxDisplay(data) {
     
     // Fonction pour trouver le thumbnail à partir de l'id_post
     function findThumbnailById(id) {
+
         const element = data.find(item => item.id_post === id);
+
         return element ? element.thumbnail : null;
+
     }
     //Varible pour stocker l'id de l'image en cours	
     let imgId
@@ -82,69 +79,43 @@ function lightboxDisplay(data) {
     //Click sur la fleche de droite
     arrowRight.addEventListener('click', showNextImage);
 
-
-
-
-
-
-
-
-
     
-        btFullscreen.forEach(function (element) {
+    btFullscreen.forEach(function (element) {
 
-            //console.log(btFullscreen);
+        //console.log(btFullscreen);
 
-            element.addEventListener('click', (event) => {
-
-
-                //console.log('dans le lightbox click fullscreen data : ', data);
-
-                //Get l'url de l'image cliquée
-                const imgElement = element.closest('figure').querySelector('.img-gallery');
-                //console.log(imgElement.src);
-                currentImageIndex = imgElement.getAttribute('data-index');
-                //console.log(currentImageIndex)
-
-                //Afficher l'image cliquée dans lightbox **********************************/
-                imgLightbox.src = imgElement.src;
-            
-                //Afficher la lightbox
-                lightbox.classList.add('show');
+        element.addEventListener('click', (event) => {
 
 
-                //Affcher les categories et ref de l'image cliquée
-                //const category = data_portfolio[currentImageIndex].category[0].name;
-                //const ref = data_portfolio[currentImageIndex].reference[0];
-                //console.log(category);
-                lightboxCategory.innerText = data[currentImageIndex].category[0].name;
-                lightboxReference.innerText = data[currentImageIndex].reference[0];
+            //console.log('dans le lightbox click fullscreen data : ', data);
 
-                //console.log(imgElement);
+            //Get l'url de l'image cliquée
+            const imgElement = element.closest('figure').querySelector('.img-gallery');
+
+            //console.log('imgElement : ', imgElement);
 
 
-            })
-        });
-    }
-    //lightboxDisplay(); 
+            //console.log(imgElement.src);
+            currentImageIndex = imgElement.getAttribute('data-index');
+            //console.log(currentImageIndex)
+
+            //Afficher l'image cliquée dans lightbox **********************************/
+            imgLightbox.src = data[currentImageIndex].thumbnail;// Prendre la phot fullsize
+        
+            //Afficher la lightbox
+            lightbox.classList.add('show');
 
 
-    /*************************************Ouvrir JSON */
-    // Chemin vers le fichier JSON
-/*     const json_File = themeDirectoryUri + '/assets/json/portfolio-data.json';
+            //Affcher les categories et ref de l'image cliquée
+            //const category = data_portfolio[currentImageIndex].category[0].name;
+            //const ref = data_portfolio[currentImageIndex].reference[0];
+            //console.log(category);
+            lightboxCategory.innerText = data[currentImageIndex].category[0].name;
+            lightboxReference.innerText = data[currentImageIndex].reference[0];
 
-    //Initialiser le tableau des portfolio
-    var data_portfolio = [];
+            //console.log(imgElement);
 
-    // Utiliser fetch pour récupérer le contenu du fichier JSON
-    fetch(json_File)
-        .then(response => response.json()) // Décoder le JSON en un objet JavaScript
-        .then(data => {
-	  
-            data_portfolio = data;
-	  
+
         })
-        .catch(error => {
-            // Gérer les erreurs éventuelles
-            console.error('Erreur lors de la récupération du fichier JSON :', error);
-        }); */
+    });
+    }
