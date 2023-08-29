@@ -103,23 +103,24 @@
     }
   }
   
-
+  /* figure .imgSrc{
+    order: 1;
+  } */
     figure {
   
-      /* width: 100%; */
-      /* height: auto; */
-      /* padding-bottom: 80%; */
+      width: 100%;
+      height: auto;
+      padding-bottom: 80%;
       position: relative;
-      display: flex;
-      /* overflow: hidden; */
+      overflow: hidden;
   
        img {
-
-        aspect-ratio: 1/1;
-        width: 20%;
-        object-fit: cover;
-        height: unset;
-        max-width: unset;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
   
     }
   }
@@ -191,7 +192,7 @@
     padding: 1rem 2rem;
     }
     .contactImgInfos p{
-    font-size: 1.2rem;
+    font-size: .8rem;
     }
     .taxonomyimgInfos{
   
@@ -209,27 +210,14 @@
   
       margin: 3rem 0;
     }
-
-    .contactImgInfos p{
-      font-size: 1.2rem;
-}
     
   
-    figure {
-  
-      position: relative;
-      display: flex;
-  
-       img {
-
-        aspect-ratio: 1/1;
-        width: 20%;
-        object-fit: cover;
-        height: unset;
-        max-width: unset;
-  
+    figure img {
+    /*     flex: 1;
+        max-width: 100%;
+        object-fit: cover; */
+        height: auto;
     }
-  }
     /* Start of Select Filters : filtering by category and tags*/
     .filters{
   

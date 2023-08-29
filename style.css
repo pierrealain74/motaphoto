@@ -1043,23 +1043,20 @@ figure:hover .rolloverImg {
     font-size: 20px;
     margin-bottom: 17px;
   }
-  /* figure .imgSrc{
-    order: 1;
-  } */
   figure {
-    width: 100%;
-    height: auto;
-    padding-bottom: 80%;
+    /* width: 100%; */
+    /* height: auto; */
+    /* padding-bottom: 80%; */
     position: relative;
-    overflow: hidden;
+    display: flex;
+    /* overflow: hidden; */
   }
   figure img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    aspect-ratio: 1/1;
+    width: 20%;
     object-fit: cover;
+    height: unset;
+    max-width: unset;
   }
   p.site-title a {
     font-size: calc(22px + 1vw);
@@ -1116,7 +1113,7 @@ figure:hover .rolloverImg {
     padding: 1rem 2rem;
   }
   .contactImgInfos p {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
   .taxonomyimgInfos {
     font-size: 2.3vw;
@@ -1127,11 +1124,19 @@ figure:hover .rolloverImg {
   .containerLoadMore {
     margin: 3rem 0;
   }
+  .contactImgInfos p {
+    font-size: 1.2rem;
+  }
+  figure {
+    position: relative;
+    display: flex;
+  }
   figure img {
-    /*     flex: 1;
-        max-width: 100%;
-        object-fit: cover; */
-    height: auto;
+    aspect-ratio: 1/1;
+    width: 20%;
+    object-fit: cover;
+    height: unset;
+    max-width: unset;
   }
   /* Start of Select Filters : filtering by category and tags*/
   .filters select {
