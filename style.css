@@ -972,6 +972,54 @@ figure:hover .rolloverImg {
   .site {
     overflow-x: hidden;
   }
+  .containerLoadMore {
+    margin: 3rem 0;
+  }
+  .menu-horizontal {
+    display: none; /* Cacher le menu horizontal sur les petits écrans */
+  }
+  #menuToggle {
+    display: block; /* Afficher le menu burger sur les petits écrans */
+  }
+  .menu-fullscreen {
+    display: none;
+    position: fixed;
+    top: -100%;
+    /*  max-width: 1440px; */
+    width: 100%;
+    height: 100vh;
+    background: var(--primary-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    transform-origin: top;
+    transition: top 0.7s ease-in-out;
+    overflow: hidden;
+  }
+  .menu-fullscreen.active {
+    top: 2rem;
+    left: 0;
+    display: flex;
+  }
+  .menu-fullscreen ul {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    margin-top: 120px;
+  }
+  .menu-fullscreen ul li a {
+    text-decoration: none;
+    font-size: 3rem;
+  }
+  .menu-fullscreen ul li a:hover {
+    text-shadow: 0px 0px 14px #ff5c00;
+  }
+  .menu-fullscreen ul p {
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 10%;
+  }
   .modal {
     padding-top: 120px; /* Location of the box */
     left: 0;
@@ -999,9 +1047,9 @@ figure:hover .rolloverImg {
     order: 1;
   } */
   figure {
-    width: 100%; /* Ajustez en fonction de votre mise en page */
-    height: 0;
-    padding-bottom: 100%; /* Crée un espace réservé de la même hauteur que la largeur */
+    width: 100%;
+    height: auto;
+    padding-bottom: 80%;
     position: relative;
     overflow: hidden;
   }
@@ -1039,14 +1087,23 @@ figure:hover .rolloverImg {
     align-items: left;
   }
   .titleimgInfos {
-    font-size: 6vw;
+    font-size: 12vw;
   }
   .taxonomyimgInfos {
-    font-size: 4.3vw !important;
+    font-size: 6.3vw !important;
     line-height: 12px;
+  }
+  .menu-main-menu-container {
+    text-align: center;
   }
   .contactImgInfos {
     order: 3;
+    flex-direction: column;
+  }
+  .site-footer ul.menu-footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
   }
   .minislider {
     display: none;
@@ -1067,6 +1124,9 @@ figure:hover .rolloverImg {
   }
 }
 @media (min-width: 801px) and (max-width: 1200px) {
+  .containerLoadMore {
+    margin: 3rem 0;
+  }
   figure img {
     /*     flex: 1;
         max-width: 100%;
