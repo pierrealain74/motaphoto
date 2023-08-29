@@ -21,16 +21,10 @@ var data_portfolio = [];
 
 //Fetch Json File defaut (tous les portfolios)
 const json_File2 = themeDirectoryUri + '/assets/json/portfolio-data.json';
-//console.log('json file dans portfolio.js : ', json_File2)
+console.log('JSON all portfolio portfolio.js : ', json_File2)
 fetch(json_File2)
     .then(response => response.json()) // Décoder le JSON en un objet JavaScript
     .then(data => {
-
-
-
-
-
-
 
 
     //     CAT URL ??    // 
@@ -91,13 +85,6 @@ fetch(json_File2)
             }
 
 
-    
-    
-       
-
-
-
-
 
     
     } else {//lancer portfolio avec les data par defaut
@@ -110,40 +97,17 @@ fetch(json_File2)
 
         portfolio(data_portfolio);
         
-        console.log('data portfolio : ', data_portfolio);
+        //console.log('data portfolio : ', data_portfolio);
         
-        console.log("Data par defaut car les paramètres ne sont pas définis dans l'URL Category, Id_post...");
+        //console.log("Data par defaut car les paramètres ne sont pas définis dans l'URL Category, Id_post...");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //console.log('data dans portfolio.js : ', data)
-
-
-
-   
-
-        
-
-
 
 
 
     })
     .catch(error => {
         // Gérer les erreurs éventuelles
-        console.error('Erreur lors de la récupération du fichier JSON :', error);
+        //console.error('Erreur lors de la récupération du fichier JSON :', error);
     });
 
 
@@ -217,8 +181,8 @@ function createFigureHTML(item, i) {
             <span class="rolloverImg-category">${item.category[0].name}</span>
             <span class="rolloverImg-reference">${item.tags[0].name}</span>
             <button class="rolloverImg-fullscreen"></button>
-            <a href="infos-photo/?id=${item.id_post}&cat=${item.category[0].name}&index=0" class="rolloverImg-eye"></a>
+            <a href="infos-photo/?postdate=${item.post_date}&id=${item.id_post}&cat=${item.category[0].name}&index=${i}" class="rolloverImg-eye"></a>
     </div>
-    <img src="${item.thumbnail_mediumlarge}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="${i}">`;
+    <img src="${item.thumbnail_mediumlarge}" class="img-gallery" alt="${item.post_title}" id="${item.id_post}" data-index="${i}" postdate="${item.post_date}">`;
 
 }// Endof function createFigureHTML(item, i)

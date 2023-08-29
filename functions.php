@@ -8,18 +8,7 @@ function motaphotochild_enqueue_styles() {
 
 }
 
-/* Insertion code JS Menu Responsive CLICK sur burger / X 
 
-      NE FONCTIONNE PAAAAAAAAAAAAAAAS !!!!!!!!!!!!!!!!!!!!
-
-      POSE DANS FOOTER
-*/
-/* add_action('wp_enqueue_scripts', 'enqueue_menu_script');
-function enqueue_menu_script() {
-    // Enregistre le script 'menu' et l'ajoute à la file d'attente
-    wp_enqueue_script('menu', get_stylesheet_directory_uri() . '/assets/js/menu.js', array(), null, true);
-}
- */
 /** Portfolio Post Type - Without ACF - */
 function portfolio_post_type() {
 
@@ -185,6 +174,8 @@ add_action('wp_enqueue_scripts', 'ajax_request');
 add_action('wp_ajax_get_portfolio_items', 'get_portfolio_items');
 add_action('wp_ajax_nopriv_get_portfolio_items', 'get_portfolio_items');
 
+
+//Selectionne la bonne variable si c'est Category ou Format
 function get_portfolio_items() {
 
 
@@ -243,8 +234,11 @@ function get_portfolio_items() {
 
             $portfolio_query->the_post();
 
+            $id_post = get_the_ID();
+            $post_date = get_the_date('Y-m-d H:i:s', $id_post);
+
             //Recupérer toutes les références
-            $reference_terms = get_the_terms(get_the_ID(), 'reference');
+            $reference_terms = get_the_terms($id_post, 'reference');
             $reference_values = array();
             if ($reference_terms && !is_wp_error($reference_terms)) {
                 foreach ($reference_terms as $term) {
@@ -253,7 +247,7 @@ function get_portfolio_items() {
             }
 
             //Recupérer tous les types
-            $types_terms = get_the_terms(get_the_ID(), 'type');
+            $types_terms = get_the_terms($id_post, 'type');
             $types_values = array();
             if ($types_terms && !is_wp_error($types_terms)) {
                 foreach ($types_terms as $type) {
@@ -264,10 +258,11 @@ function get_portfolio_items() {
 
             //Créer un array complet de toutes les datas des post
             $post_data = array(
-                'id_post' => get_the_ID(),
+                'id_post' => $id_post,
                 'post_title' => get_the_title(),
-                'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
-                'thumbnail_mediumlarge' => get_the_post_thumbnail_url(get_the_ID(), 'medium_large'),
+                'post_date' => $post_date,
+                'thumbnail' => get_the_post_thumbnail_url($id_post, 'full'),
+                'thumbnail_mediumlarge' => get_the_post_thumbnail_url($id_post, 'medium_large'),
                 'category' => get_the_category(), // Cat = television, concert,..
                 'tags' => get_the_tags(), //Tags = paysage,..
                 'type' => $type_values, //Types : Numérique,..

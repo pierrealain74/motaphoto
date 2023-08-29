@@ -38,87 +38,34 @@ var cat; // declare category pour accessible partout
 
 const arrowblackNext = document.querySelector('.arrowblackNext');
 const arrowblackPrev = document.querySelector('.arrowblackPrev');
-const rolloverArrowSliderImg = document.querySelector('.rolloverArrowSlider img');
-const rolloverArrowSlider = document.querySelector('.rolloverArrowSlider');
+/*  */
 
-
-/**ROLLOVER ARRROWS */
-arrowblackNext.addEventListener('mouseover', (event) => {
-
-
-        //Récupere l'index dans le html inscrit en html via php
-        let dataindex = parseInt(figureImg.getAttribute('data-index'));
-        dataindex++;
-
-        if (dataindex >= data_portfolio.length) {
-            dataindex = 0;
-        }
-      
-        rolloverArrowSlider.classList.add("slide");
-
-        rolloverArrowSliderImg.src = data_portfolio[dataindex].thumbnail;
-
-
-});
-arrowblackNext.addEventListener('mouseout', (event) => {
-  rolloverArrowSlider.classList.remove("slide");
-});
-
-arrowblackPrev.addEventListener('mouseover', (event) => {
-
+arrowblackNext.addEventListener('click', (event) => {
 
   //Récupere l'index dans le html inscrit en html via php
   let dataindex = parseInt(figureImg.getAttribute('data-index'));
-  dataindex--;
+  dataindex++;
 
-  if (dataindex < 0) {
-
-    dataindex = data_portfolio.length - 1;
-    
+  if (dataindex >= data_portfolio.length) {
+      dataindex = 0;
   }
 
+  /**Img pricnipale */
+  figureImg.setAttribute('data-index', dataindex);
+  figureImg.setAttribute('src', data_portfolio[dataindex].thumbnail);
 
-  rolloverArrowSlider.classList.add("slide");
+  let minisliderIndex = dataindex + 1; // index suivant pour le minislider
 
-  rolloverArrowSliderImg.src = data_portfolio[dataindex].thumbnail;
+  if (minisliderIndex >= data_portfolio.length) {
+      minisliderIndex = 0;
+  }
+  /**Img minislider */
+  minisliderImg.setAttribute('src', data_portfolio[minisliderIndex].thumbnail);
+  minisliderImg.setAttribute('data-index', minisliderIndex);
 
+  //Display Title, reference, type, format,...of main photos
+  displayImgInfo(dataindex);
 
-});
-arrowblackPrev.addEventListener('mouseout', (event) => {
-  rolloverArrowSlider.classList.remove("slide");
-});
-
-
-
-/**CLICK ON ARRROWS */
-arrowblackNext.addEventListener('click', (event) => {
-
-
-
-
-        //Récupere l'index dans le html inscrit en html via php
-        let dataindex = parseInt(figureImg.getAttribute('data-index'));
-        dataindex++;
-
-        if (dataindex >= data_portfolio.length) {
-            dataindex = 0;
-        }
-
-        /**Img pricnipale */
-        figureImg.setAttribute('data-index', dataindex);
-        figureImg.setAttribute('src', data_portfolio[dataindex].thumbnail);
-
-/*         let minisliderIndex = dataindex + 1; // index suivant pour le minislider
-
-        if (minisliderIndex >= data_portfolio.length) {
-            minisliderIndex = 0;
-        } */
-        /**Img minislider */
-     /*    minisliderImg.setAttribute('src', data_portfolio[minisliderIndex].thumbnail);
-        minisliderImg.setAttribute('data-index', minisliderIndex); */
-
-        //Display Title, reference, type, format,...of main photos
-        displayImgInfo(dataindex);
 
  
 
@@ -138,14 +85,14 @@ arrowblackPrev.addEventListener('click', (event) => {
   figureImg.setAttribute('data-index', dataindex); 
   figureImg.setAttribute('src', data_portfolio[dataindex].thumbnail);
 
-/*   let minisliderIndex = dataindex - 1;
+  let minisliderIndex = dataindex - 1;
 
   if (minisliderIndex < 0) {
     minisliderIndex = data_portfolio.length - 1;
   }
 
   //Affiche ll'image suivante
-  minisliderImg.setAttribute('src', data_portfolio[minisliderIndex].thumbnail); */
+  minisliderImg.setAttribute('src', data_portfolio[minisliderIndex].thumbnail);
 
   //Display Title, reference, type, format,...of main photos
   displayImgInfo(dataindex);
@@ -165,19 +112,14 @@ function displayImgInfo(dataindex) {
   
 
     /**Datas img : category, reference format,... */
-  let titre = data_portfolio[dataindex].post_title;
-  
-
-  console.log('titre suivant : ', titre);
-
+    let titre = data_portfolio[dataindex].post_title;
     var ref = data_portfolio[dataindex].reference;
     cat = data_portfolio[dataindex].category[0].name;
     let tag = data_portfolio[dataindex].tags[0].name;
     let type = data_portfolio[dataindex].type[0];
-    let postdate = data_portfolio[dataindex].post_date;
     taxonomyimgInfosTitle.innerHTML = titre;
   
-  taxonomyimgInfos.innerHTML = '<span class="ref">Reference : ' + ref + '</span><br />Catégorie : ' + cat + '<br />Format : ' + tag + '<br />Type : ' + type + '<br />Année : ' + postdate;
+  taxonomyimgInfos.innerHTML = '<span class="ref">Reference : ' + ref + '</span><br />Catégorie : ' + cat + '<br />Format : ' + tag + '<br />Type : ' + type + '<br />Année : 2021';
 
   //console.log('cat dans fonc displayInfo : ', cat);
 

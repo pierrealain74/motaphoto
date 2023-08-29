@@ -12,6 +12,7 @@
  //Verifier si le fichier Json Portfolio default n'est pas vide 
 $jsonfile = get_stylesheet_directory() . '/assets/json/portfolio-data.json';
 
+//Crée le JSON portfolio si il est vide
 if (empty(file_get_contents($jsonfile))) {
     save_portfolio_update_json();
 }
@@ -21,6 +22,7 @@ if (empty(file_get_contents($jsonfile))) {
  if (isset($_GET['index'])) {
     $index = $_GET['index'];
 	$id_post = $_GET['id'];
+	$postdate = $_GET['postdate'];
 	$categoryNameToSearch = $_GET['cat'];
 }
 
@@ -34,14 +36,22 @@ get_header();
 var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 </script>
 
-<!--////////////////////////////////////Carousel//////////////////////////////////////////////////////-->
+
+
 
 <?php
+
 	//Affichage de la photo cliquée dans la home
 	//Ouvre le fichier JSON 
+
 	$json_data = file_get_contents(get_stylesheet_directory() . '/assets/json/portfolio-data.json');
 	$data = json_decode($json_data, true);
 ?>
+
+
+
+
+
 <div class="containerimgInfos">
 	<div class="imgInfos">
 		
@@ -67,26 +77,26 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 							echo '<span class="cat">Catégorie : '.$imageElement['category'][0]['name'].'</span><br />';
 							echo 'Format : '.$imageElement['tags'][0]['name'].'<br />';
 							echo 'Type : '.$imageElement['type'][0].'<br />';
-							echo 'Année : 2021';
+							echo 'Année : '.$imageElement['post_date'];
 						echo '</p>';
 
 						// ...
 						break; // Sortir de la boucle car l'élément a été trouvé
 					} 
 				}
-
 				?>
 
 			</div>
 				<!--Afficher la photo sur la partie de droite -->
 
 			<figure class="item">
+				
 					<div class="rolloverImgInfos">
 						<button class="rolloverImg-fullscreenInfos"></button>
 					</div> 
 					<?php
 
-					echo '<img src="' . $imageElement['thumbnail_mediumlarge'] . '" alt="'. $imageElement['post_title'] .'" class="imageInfos" data-index="'.$index.'">';
+					echo '<img src="' . $imageElement['thumbnail_mediumlarge'] . '" alt="'. $imageElement['post_title'] .'" class="imageInfos" data-index="'.$index.'" postdate="'.$imageElement['post_date'].'">';
 					?>			
 			</figure>
 			<div class="contactImgInfos item">
@@ -97,22 +107,8 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 			</div>	
 			<!--MINI SLIDER ******************************-->
 			<div class="minislider item">
-				
-				<?php
 
-					$indexMini = $index;
-					$indexMini++;//On prend l'image suivante
-
-					if($indexMini >= count($data)-1){ // si la photo principale est la derniere photo de la liste on repart à 0
-					
-						$index = 0;
-
-					} 
-					
-
-					$imageElementNext = $data[$indexMini];
-					echo '<img src="' . $imageElementNext['thumbnail_mediumlarge'] . '" alt="'. $imageElementNext['post_title'] .'" class="imgminislider" data-index="'.$indexMini.'">';
-				?>
+				<div class="rolloverArrowSlider"><img src="" alt="" /></div>
 				<button class="arrowblackNext">Suivant</button>
 	   			<button class="arrowblackPrev">Precedent</button>
 

@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
                       .then(data => {
                         
 
+                        console.log('category data :', data)
+                        
+
                         var container = document.querySelector(".container");
                         container.remove();
                         
@@ -72,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       .then(response => response.json())
                       .then(data => {
                         
-                        //console.log('format data :', data)
+                        console.log('format data :', data)
 
 
                         var container = document.querySelector(".container");
@@ -96,8 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
       
         sortSelect.addEventListener("change", function () {
                 
-                      var selectedSort = sortSelect.value;
-                      console.log('sort selectionne : ', selectedSort)
+                      var selectedSort = sortSelect.value;//Récupere la valeur : Ancien ou Récent
+                      //console.log('sort selectionne : ', selectedSort)
                       var url = '';
                     
           
@@ -113,32 +116,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(response => response.json())
                 .then(data => {
                               
-                              //console.log('sort data :', data)
+                  console.log('sort data :', data);
                   
-                  if (selectedSort == 'recent') {//sort du plus GRAND au plus PETIT les id_post
-                     // Fonction de comparaison personnalisée pour trier par id_post du plus grand au plus petit
-                    
-                    
+                  if (selectedSort == 'recent') {//sort du plus Recent au plus Ancien les index_date
 
                     
-                              function compareByIdPostDescending(a, b) {// Recent vers Ancien
-                              return b.id_post - a.id_post;
-                              }
-                              console.log(data.sort(compareByIdPostDescending));
-
-
-                  } else if (selectedSort == 'ancien') {//sort du plus PETIT au plus GRAND les id_post
+                    data.sort(function(a, b) {
+                      var dateA = new Date(a.post_date);
+                      var dateB = new Date(b.post_date);
+                      return dateB - dateA;
+                    });
 
 
 
-                            function compareByIdPostMounting(a, b) {// Ancien vers Récent
-                              return a.id_post - b.id_post;
-                              }
+                  } else if (selectedSort == 'ancien') {//sort du plus Ancien au plus Recent les index_date
 
-                              // Triez le tableau en utilisant la fonction de comparaison
-                              console.log(data.sort(compareByIdPostMounting));
 
-                    
+                    data.sort(function(a, b) {
+                      var dateA = new Date(a.post_date);
+                      var dateB = new Date(b.post_date);
+                      return dateA - dateB;
+                    });
+
+
+                    /* data.sort((a, b) => b.post_date - a.post_date); */
+
+
+
                   }
 
                   var container = document.querySelector(".container");

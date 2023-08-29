@@ -15,14 +15,18 @@ $args = array(
 /*Requete Wordpress des Portfolio*/
 $photo_query = new WP_Query($args);
 
-$counter = 0;
 
 while ($photo_query -> have_posts()) {
 
     $photo_query->the_post();
 
+
+    $id_post = get_the_ID();
+    //$post_date = get_the_date('Y-m-d', $id_post);
+    $post_date = get_the_date('Y-m-d H:i:s', $id_post);
+
     //Recupérer toutes les références
-    $reference_terms = get_the_terms(get_the_ID(), 'reference');
+    $reference_terms = get_the_terms($id_post, 'reference');
     $reference_values = array();
     if ($reference_terms && !is_wp_error($reference_terms)) {
     foreach ($reference_terms as $term) {
@@ -31,7 +35,7 @@ while ($photo_query -> have_posts()) {
     }
 
      //Recupérer tous les types
-     $types_terms = get_the_terms(get_the_ID(), 'type');
+     $types_terms = get_the_terms($id_post, 'type');
      $types_values = array();
      if ($types_terms && !is_wp_error($types_terms)) {
      foreach ($types_terms as $type) {
@@ -44,21 +48,23 @@ while ($photo_query -> have_posts()) {
   
     //Créer un array complet de toutes les datas des post
     $post_data = array(
-        'id_post' => get_the_ID(),
+        'id_post' => $id_post,
         'post_title' => get_the_title(),
-        'thumbnail' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
-        'thumbnail_mediumlarge' => get_the_post_thumbnail_url(get_the_ID(), 'medium_large'),
+        'post_date' => $post_date,
+        'thumbnail' => get_the_post_thumbnail_url($id_post, 'full'),
+        'thumbnail_mediumlarge' => get_the_post_thumbnail_url($id_post, 'medium_large'),
         'category' => get_the_category(),// Cat = television, concert,..
         'tags' => get_the_tags(),//Tags = paysage,..
         'type' => $type_values,//Types : Numérique,..
         'reference' =>  $reference_values,//taxonomie Reference = bf2395,..
     );
-    $data[] = $post_data; 
+    $data[] = $post_data;
 
+    
 
-    $counter++;
 }
 
+wp_reset_postdata(); // Réinitialiser la requete
 
 /*Creation du fichier JSON*/
 $json_data = json_encode($data);

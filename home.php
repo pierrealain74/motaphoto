@@ -10,6 +10,7 @@
  //Verifier si le fichier Json Portfolio default n'est pas vide 
 $jsonfile = get_stylesheet_directory() . '/assets/json/portfolio-data.json';
 
+//Creation du JSON si JSON Vide : en cas de migration par exemple
 if (empty(file_get_contents($jsonfile))) {
     save_portfolio_update_json();
 }
@@ -32,6 +33,7 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	//START : Get All portfolio Datas via JSON file
 	$json_data = file_get_contents(get_stylesheet_directory() . '/assets/json/portfolio-data.json');
 	$data = json_decode($json_data, true);
+	//var_dump('json par defaut : ', $data);
 
 ?>
 
@@ -50,7 +52,7 @@ var themeDirectoryUri = "<?php echo get_stylesheet_directory_uri(); ?>";
 	//Template portfolio
 /* 	get_template_part('template-parts/portfolio', null, array('data' => $data)); */
 
-get_template_part('template-parts/tmp_lightbox');
+	get_template_part('template-parts/tmp_lightbox');
 	
 ?>
 
