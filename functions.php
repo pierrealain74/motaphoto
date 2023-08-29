@@ -9,7 +9,7 @@ function motaphotochild_enqueue_styles() {
 }
 
 
-/** Portfolio Post Type - Without ACF - */
+/** Creation of Custom Post Type : Portfolio   *********************************/ 
 function portfolio_post_type() {
 
     $labels = array(
@@ -50,23 +50,23 @@ function portfolio_post_type() {
 
 
 
-    //******************************************** */ Ajouter une taxonomie personnalisée "Référence"
+    //************Ajout d'une taxonomie personnalisée "Référence"*********************************/ 
     $args_taxonomy = array(
-        'hierarchical'      => false, // Si vous souhaitez que les termes soient hiérarchiques comme les catégories, mettez à 'true'
+        'hierarchical'      => false, 
         'public'            => true,
-        'show_in_rest'      => true, // Pour utiliser l'éditeur Gutenberg
+        'show_in_rest'      => true, 
         'labels'            => array(
             'name'              => 'Références', // Nom de la taxonomie
             'singular_name'     => 'Référence',
             'menu_name'         => 'Références', // Nom affiché dans le menu
-            'all_items'         => 'Toutes les Références', // Tous les termes
-            'edit_item'         => 'Modifier Référence', // Modifier un terme
-            'view_item'         => 'Voir Référence', // Voir un terme
-            'update_item'       => 'Mettre à jour Référence', // Mettre à jour un terme
-            'add_new_item'      => 'Ajouter une nouvelle Référence', // Ajouter un nouveau terme
-            'new_item_name'     => 'Nom du nouveau Référence', // Nom du nouveau terme
-            'search_items'      => 'Rechercher des Références', // Rechercher des termes
-            'popular_items'     => 'Références populaires', // Termes populaires
+            'all_items'         => 'Toutes les Références', 
+            'edit_item'         => 'Modifier Référence', 
+            'view_item'         => 'Voir Référence', 
+            'update_item'       => 'Mettre à jour Référence', 
+            'add_new_item'      => 'Ajouter une nouvelle Référence', 
+            'new_item_name'     => 'Nom du nouveau Référence', 
+            'search_items'      => 'Rechercher des Références', 
+            'popular_items'     => 'Références populaires', 
             'separate_items_with_commas' => 'Séparer les Références par des virgules',
             'add_or_remove_items'        => 'Ajouter ou supprimer des Références',
             'choose_from_most_used'      => 'Choisir parmi les Références les plus utilisées',
@@ -79,12 +79,9 @@ function portfolio_post_type() {
     register_taxonomy( 'reference', 'portfolio', $args_taxonomy );
 
 
-/************************************* */
-
-
-    // Ajouter une taxonomie personnalisée "Type"
+/*********Ajouter une taxonomie personnalisée "Type"**************************** */    
     $args_taxonomy = array(
-        'hierarchical'      => false, // Si vous souhaitez que les termes soient hiérarchiques comme les catégories, mettez à 'true'
+        'hierarchical'      => false, 
         'public'            => true,
         'show_in_rest'      => true, // Pour utiliser l'éditeur Gutenberg
         'labels'            => array(
@@ -115,20 +112,6 @@ add_action( 'init', 'portfolio_post_type' );
 
 
 
-
-/*TEST CREATION JSON -- IMAGES SMAL FULL */
-
-
-
-/* function load_create_json_portfolio() {
-    require_once get_stylesheet_directory() . '/assets/php/create_json_portfolioTest.php';
-}
-
-add_action('init', 'load_create_json_portfolio'); */
-
-/* MAJ du fichier JSON Portfolio */
-
-
 function save_portfolio_update_json($post_id = null) {
     // Si $post_id n'est pas fourni, on vérifie le type de post en cours de traitement
     if ($post_id === null || get_post_type($post_id) === 'portfolio') {
@@ -151,7 +134,7 @@ add_action('wp_insert_post', 'save_portfolio_update_json');
 function ajax_request()
 {
 
-    /* if (is_home()) { */
+    if (is_front_page()) {
 
         // Define the URL for your AJAX endpoint
         $ajax_url = admin_url('admin-ajax.php');
@@ -159,7 +142,7 @@ function ajax_request()
         wp_enqueue_script('ajaxrequest', get_stylesheet_directory_uri() . '/assets/js/inputselect.js');
         wp_localize_script('ajaxrequest', 'ajax_object', array('ajax_url' => $ajax_url));
 
-   /*  } */
+    }
 }
 add_action('wp_enqueue_scripts', 'ajax_request');
 

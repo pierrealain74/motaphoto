@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   
 
-  /** RAJOUT DES SELECT FORMAT ET SIORT */
+  /** AJOUT DES SELECT FORMAT ET SORT */
  
 
   
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var url = ajax_object.ajax_url + "?action=get_portfolio_items&category=" + selectedCategory;
                 urlSort = url;
                 //var url = ajax_object.ajax_url.replace('/wp-admin/admin-ajax.php', '/portfolio.php')
-                //console.log('url cat :', url) http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=T%C3%A9l%C3%A9vision
+                //console.log('url cat :', url)// http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=T%C3%A9l%C3%A9vision
                 
 
                 fetch(url)//lis le array json dans l'url : http://motaphoto.local/wp-admin/admin-ajax.php?action=get_portfolio_items&category=Mariage
